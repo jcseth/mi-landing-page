@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Experience</title>
+    <title>Poster Shot - Vende Posters Deportivos Online</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -15,9 +15,9 @@
         }
 
         :root {
-            --primary: #7c3aed;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
+            --primary: #2B4162;
+            --secondary: #E63946;
+            --accent: #1a2940;
             --dark: #0f0f0f;
             --light: #fafafa;
         }
@@ -34,7 +34,6 @@
             line-height: 1.6;
         }
 
-        /* Canvas para partículas */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -45,7 +44,6 @@
             pointer-events: none;
         }
 
-        /* Navbar con glassmorphism */
         nav {
             position: fixed;
             top: 0;
@@ -59,64 +57,54 @@
         }
 
         nav.scrolled {
-            background: rgba(15, 15, 15, 0.8);
+            background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(20px) saturate(180%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem 5%;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
             letter-spacing: -0.05em;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientFlow 3s ease infinite;
-        }
-
-        @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .nav-menu {
             display: flex;
-            gap: 3rem;
-            list-style: none;
+            align-items: center;
+            gap: 0.3rem;
         }
 
-        .nav-menu a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            position: relative;
+        .logo-poster {
+            color: var(--primary);
         }
 
-        .nav-menu a:hover {
+        .logo-shot {
+            color: var(--secondary);
+        }
+
+        .logo-diamond {
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            transform: rotate(45deg);
+            margin: 0 0.2rem;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
 
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: translateX(-50%);
-            transition: width 0.3s;
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(43, 65, 98, 0.4);
+            border-color: var(--secondary);
         }
 
-        .nav-menu a:hover::before {
-            width: 100%;
-        }
-
-        /* Hero Section con efecto 3D */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -125,53 +113,79 @@
             justify-content: center;
             padding: 0 5%;
             z-index: 10;
-            perspective: 1000px;
+            text-align: center;
         }
 
         .hero-content {
-            text-align: center;
-            max-width: 1100px;
-            transform-style: preserve-3d;
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(230, 57, 70, 0.15);
+            color: var(--secondary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(230, 57, 70, 0.3);
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
             font-weight: 900;
-            line-height: 1;
-            margin-bottom: 2rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #fff 0%, var(--primary) 30%, var(--secondary) 60%, var(--accent) 100%);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: heroGradient 8s ease infinite;
         }
 
-        @keyframes heroGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--secondary), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 3rem;
-            font-weight: 400;
-            line-height: 1.5;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-cta {
+        .hero-stats {
             display: flex;
-            gap: 1.5rem;
+            gap: 3rem;
             justify-content: center;
+            margin: 2rem 0 3rem;
             flex-wrap: wrap;
         }
 
-        /* Botones mejorados */
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
         .btn {
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+            padding: 1.3rem 3rem;
+            font-size: 1.15rem;
+            font-weight: 700;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -183,64 +197,131 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--secondary), #ff6b6b);
             color: #fff;
-            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            transition: left 0.6s;
-            z-index: -1;
-        }
-
-        .btn-primary:hover::before {
-            left: 0;
+            box-shadow: 0 10px 40px rgba(230, 57, 70, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.5);
+            box-shadow: 0 20px 60px rgba(230, 57, 70, 0.5);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(43, 65, 98, 0.3);
             color: #fff;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--primary);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(43, 65, 98, 0.5);
+            transform: translateY(-3px);
+            border-color: var(--secondary);
         }
 
-        /* Sección de características con cards 3D */
-        .features {
-            padding: 10rem 5%;
+        .how-it-works {
+            padding: 8rem 5%;
             position: relative;
             z-index: 10;
+            background: linear-gradient(180deg, transparent, rgba(43, 65, 98, 0.05), transparent);
         }
 
         .section-title {
             text-align: center;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 4rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px rgba(230, 57, 70, 0.2);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0 auto 2rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border: 2px solid var(--secondary);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .step-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .features {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 10;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -249,109 +330,59 @@
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 3rem;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1));
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s;
         }
 
         .feature-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: rgba(124, 58, 237, 0.5);
-            box-shadow: 0 30px 80px rgba(124, 58, 237, 0.3);
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 50px rgba(43, 65, 98, 0.3);
         }
 
         .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.5s;
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: rotateY(360deg) scale(1.1);
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .feature-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
-            position: relative;
-            z-index: 1;
         }
 
         .feature-card p {
             color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
+            line-height: 1.7;
         }
 
-        /* Sección de pricing moderna */
         .pricing {
-            padding: 10rem 5%;
+            padding: 8rem 5%;
             position: relative;
             z-index: 10;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 4rem auto 0;
+            background: linear-gradient(180deg, transparent, rgba(230, 57, 70, 0.05), transparent);
         }
 
         .pricing-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            max-width: 700px;
+            margin: 3rem auto 0;
+            background: linear-gradient(135deg, rgba(43, 65, 98, 0.2), rgba(230, 57, 70, 0.1));
+            backdrop-filter: blur(30px);
+            border: 2px solid var(--primary);
             border-radius: 30px;
-            padding: 3rem 2.5rem;
+            padding: 4rem 3rem;
             text-align: center;
-            transition: all 0.5s;
             position: relative;
             overflow: hidden;
         }
 
-        .pricing-card.featured {
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured::before {
-            content: 'MÁS POPULAR';
+        .pricing-badge {
             position: absolute;
-            top: 20px;
+            top: 25px;
             right: -35px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--secondary), #ff6b6b);
             color: #fff;
             padding: 0.5rem 3rem;
             font-size: 0.75rem;
@@ -360,55 +391,76 @@
             letter-spacing: 0.1em;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary);
-            box-shadow: 0 30px 80px rgba(124, 58, 237, 0.3);
-        }
-
-        .pricing-title {
-            font-size: 1.8rem;
+        .pricing-card h3 {
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
 
         .pricing-price {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 900;
             margin: 2rem 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--secondary);
         }
 
         .pricing-price span {
             font-size: 1.5rem;
-            opacity: 0.7;
+            opacity: 0.8;
+        }
+
+        .pricing-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.7;
         }
 
         .pricing-features {
             list-style: none;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             text-align: left;
         }
 
         .pricing-features li {
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .pricing-features li::before {
             content: '✓';
-            color: var(--accent);
+            color: var(--secondary);
             font-weight: bold;
-            margin-right: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
 
-        /* CTA Final */
+        .roi-highlight {
+            background: rgba(230, 57, 70, 0.15);
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .roi-highlight h4 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .roi-highlight p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
         .cta-final {
-            padding: 12rem 5%;
+            padding: 10rem 5%;
             text-align: center;
             position: relative;
             z-index: 10;
@@ -417,7 +469,7 @@
         .cta-box {
             max-width: 900px;
             margin: 0 auto;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.2));
+            background: linear-gradient(135deg, rgba(43, 65, 98, 0.3), rgba(230, 57, 70, 0.2));
             backdrop-filter: blur(30px);
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 40px;
@@ -426,245 +478,234 @@
             overflow: hidden;
         }
 
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
         .cta-box h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 1.5rem;
         }
 
         .cta-box p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
+            line-height: 1.6;
         }
 
-        /* Footer */
         footer {
-            padding: 4rem 5%;
+            padding: 3rem 5%;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Responsive */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .hero-stats {
+                gap: 1.5rem;
             }
 
-            .hero-cta {
-                flex-direction: column;
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .steps-grid {
+                gap: 2rem;
+            }
+
+            .pricing-card {
+                padding: 3rem 2rem;
+            }
+
+            .cta-box {
+                padding: 3rem 2rem;
             }
 
             .btn {
                 width: 100%;
             }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-        }
-
-        /* Cursor personalizado */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(124, 58, 237, 0.5);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-20px); }
-        }
-
-        .scroll-indicator svg {
-            width: 30px;
-            height: 50px;
-            stroke: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
 <body>
     <canvas id="particles-canvas"></canvas>
     
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <a href="https://wa.me/5212221234567?text=Hola,%20quiero%20información%20sobre%20Poster%20Shot" class="whatsapp-float" target="_blank">
+        💬
+    </a>
 
     <nav id="navbar">
-        <div class="logo">NEXUS</div>
-        <ul class="nav-menu">
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#features">Características</a></li>
-            <li><a href="#pricing">Precios</a></li>
-            <li><a href="#contact">Contacto</a></li>
-        </ul>
+        <div class="logo">
+            <span class="logo-poster">POSTER</span>
+            <div class="logo-diamond"></div>
+            <span class="logo-shot">SHOT</span>
+        </div>
+        <a href="https://wa.me/5212221234567?text=Hola,%20quiero%20información%20sobre%20Poster%20Shot" class="nav-cta" target="_blank">Hablar por WhatsApp</a>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <h1>El Futuro de las Suscripciones</h1>
-            <p class="hero-subtitle">Revoluciona tu negocio con la plataforma más avanzada, intuitiva y poderosa del mercado. Sin complicaciones, solo resultados.</p>
-            <div class="hero-cta">
-                <a href="#pricing" class="btn btn-primary">Comienza Gratis</a>
-                <a href="#features" class="btn btn-secondary">Ver Demo</a>
+            <div class="hero-badge">🚀 Negocio 100% Automatizado</div>
+            <h1>Vende Posters Deportivos y Gana <span class="highlight">$500 por Venta</span></h1>
+            <p class="hero-subtitle">Nosotros editamos, imprimimos y enviamos. Tú solo vendes y cobras. Sin inventario, sin complicaciones.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">$500</span>
+                    <span class="stat-label">Ganancia por Poster</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2 Ventas</span>
+                    <span class="stat-label">Recuperas Inversión</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Inventario Necesario</span>
+                </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 48" fill="none">
-                <rect x="9" y="9" width="6" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
-                <circle cx="12" cy="15" r="2" fill="currentColor">
-                    <animate attributeName="cy" from="15" to="25" dur="1.5s" repeatCount="indefinite"/>
-                </circle>
-            </svg>
+
+            <a href="https://wa.me/5212221234567?text=Hola,%20quiero%20más%20información%20sobre%20cómo%20vender%20posters%20con%20Poster%20Shot" class="btn btn-primary" target="_blank">Quiero Información por WhatsApp</a>
         </div>
     </section>
 
-    <section class="features" id="features">
-        <h2 class="section-title" data-aos="fade-up">¿Por Qué Elegirnos?</h2>
+    <section class="how-it-works" id="como-funciona">
+        <h2 class="section-title" data-aos="fade-up">¿Cómo Funciona?</h2>
+        <p class="section-subtitle" data-aos="fade-up">Tres pasos simples para empezar a generar ingresos</p>
+        
+        <div class="steps-grid">
+            <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-number">1</div>
+                <div class="step-icon">📸</div>
+                <h3>Tu Cliente Te Manda Fotos</h3>
+                <p>Una foto de frente y otra de espaldas del jugador. Las subes a nuestro sistema web desde cualquier dispositivo.</p>
+            </div>
+            
+            <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-number">2</div>
+                <div class="step-icon">✨</div>
+                <h3>Nosotros Hacemos TODO</h3>
+                <p>Editamos profesionalmente, quitamos fondos, personalizamos con nombre, equipo y logo. Imprimimos en marco premium 8x32" y enviamos directo a tu cliente.</p>
+            </div>
+            
+            <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-number">3</div>
+                <div class="step-icon">💰</div>
+                <h3>Tú Cobras y Ganas</h3>
+                <p>Vendes a $1,000. Nosotros cobramos $500 (que cubre impresión, marco y envío). Tú te quedas con $500 de ganancia limpia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="caracteristicas">
+        <h2 class="section-title" data-aos="fade-up">¿Por Qué Poster Shot?</h2>
+        <p class="section-subtitle" data-aos="fade-up">Todo lo que necesitas para vender sin complicaciones</p>
+        
         <div class="features-grid">
             <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">🚀</div>
-                <h3>Implementación Instantánea</h3>
-                <p>Activa tu sistema de suscripciones en menos de 5 minutos. Sin configuraciones complejas ni código.</p>
+                <span class="feature-icon">⚡</span>
+                <h3>Software Web Súper Fácil</h3>
+                <p>No instalas nada. Funciona en computadora y celular desde el navegador. Listo en segundos.</p>
             </div>
+            
             <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">💎</div>
-                <h3>Experiencia Premium</h3>
-                <p>Interfaz diseñada para convertir. Cada píxel optimizado para maximizar tus suscripciones.</p>
+                <span class="feature-icon">🏈</span>
+                <h3>Todos los Deportes</h3>
+                <p>Fútbol, basketball, baseball, americano y más. Plantillas profesionales para cada deporte.</p>
             </div>
+            
             <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">📊</div>
-                <h3>Analytics en Tiempo Real</h3>
-                <p>Dashboard inteligente con métricas que realmente importan. Toma decisiones basadas en datos.</p>
+                <span class="feature-icon">🎨</span>
+                <h3>Edición Profesional Automática</h3>
+                <p>El sistema quita fondos, ajusta colores y personaliza todo automáticamente. Calidad de diseñador sin ser diseñador.</p>
             </div>
+            
             <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">🔒</div>
-                <h3>Seguridad Bancaria</h3>
-                <p>Certificación PCI-DSS y encriptación de nivel militar. Tus datos y los de tus clientes están protegidos.</p>
+                <span class="feature-icon">📦</span>
+                <h3>Nosotros Enviamos</h3>
+                <p>Tú solo nos das los datos de tu venta. Nosotros generamos la guía y enviamos directo a tu cliente.</p>
             </div>
+            
             <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">⚡</div>
-                <h3>Automatización Total</h3>
-                <p>Pagos recurrentes, renovaciones, recordatorios. Todo funciona en piloto automático.</p>
+                <span class="feature-icon">🖼️</span>
+                <h3>Marco Premium Incluido</h3>
+                <p>Cada poster va en marco de alta calidad 8x32 pulgadas. Listo para colgar.</p>
             </div>
+            
             <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">🎯</div>
-                <h3>ROI Garantizado</h3>
-                <p>Clientes reportan 300% de aumento en conversiones. O te devolvemos tu dinero.</p>
+                <span class="feature-icon">🔒</span>
+                <h3>Sistema de Créditos Seguro</h3>
+                <p>Vista previa con marca de agua. Solo desbloqueamos en alta calidad cuando confirmas la venta.</p>
             </div>
         </div>
     </section>
 
-    <section class="pricing" id="pricing">
-        <h2 class="section-title" data-aos="fade-up">Planes que Crecen Contigo</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
-                <h3 class="pricing-title">Starter</h3>
-                <div class="pricing-price">$29<span>/mes</span></div>
-                <ul class="pricing-features">
-                    <li>Hasta 100 suscriptores</li>
-                    <li>Dashboard básico</li>
-                    <li>Pagos automáticos</li>
-                    <li>Soporte por email</li>
-                    <li>SSL gratis</li>
-                </ul>
-                <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: 2rem;">Empezar Ahora</a>
-            </div>
+    <section class="pricing" id="precio">
+        <h2 class="section-title" data-aos="fade-up">Inversión Mensual</h2>
+        <p class="section-subtitle" data-aos="fade-up">Acceso completo al sistema + créditos incluidos</p>
+        
+        <div class="pricing-card" data-aos="zoom-in">
+            <div class="pricing-badge">PLAN COMPLETO</div>
+            <h3>Poster Shot Pro</h3>
+            <div class="pricing-price">$1,000<span>/mes</span></div>
+            <p class="pricing-description">Todo lo que necesitas para empezar a vender y generar ingresos desde el primer día</p>
             
-            <div class="pricing-card featured" data-aos="zoom-in" data-aos-delay="200">
-                <h3 class="pricing-title">Pro</h3>
-                <div class="pricing-price">$79<span>/mes</span></div>
-                <ul class="pricing-features">
-                    <li>Suscriptores ilimitados</li>
-                    <li>Analytics avanzado</li>
-                    <li>Automatización completa</li>
-                    <li>Soporte prioritario 24/7</li>
-                    <li>Integraciones premium</li>
-                    <li>API completa</li>
-                    <li>White label</li>
-                </ul>
-                <a href="#" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Comenzar Gratis</a>
+            <ul class="pricing-features">
+                <li>10 créditos incluidos (10 posters)</li>
+                <li>Software web completo sin límites</li>
+                <li>Plantillas de todos los deportes</li>
+                <li>Edición automática profesional</li>
+                <li>Impresión en marco premium 8x32"</li>
+                <li>Envío directo a tus clientes</li>
+                <li>Sistema de marca de agua seguro</li>
+                <li>Soporte por WhatsApp</li>
+                <li>Créditos adicionales disponibles</li>
+            </ul>
+
+            <div class="roi-highlight">
+                <h4>💡 Haz las cuentas:</h4>
+                <p>Cada poster te deja <strong>$500 de ganancia</strong>. Con solo <strong>2 ventas recuperas tu inversión</strong> del mes. De la tercera venta en adelante, ¡todo es ganancia pura!</p>
             </div>
-            
-            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="300">
-                <h3 class="pricing-title">Enterprise</h3>
-                <div class="pricing-price">Custom</div>
-                <ul class="pricing-features">
-                    <li>Todo de Pro +</li>
-                    <li>Servidor dedicado</li>
-                    <li>Manager exclusivo</li>
-                    <li>Personalización total</li>
-                    <li>SLA 99.99%</li>
-                    <li>Onboarding VIP</li>
-                </ul>
-                <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: 2rem;">Contactar Ventas</a>
-            </div>
+
+            <a href="https://wa.me/5212221234567?text=Hola,%20quiero%20más%20información%20sobre%20el%20plan%20de%20$1,000%20mensuales%20de%20Poster%20Shot" class="btn btn-primary" style="width: 100%; margin-top: 2rem;" target="_blank">Solicitar Información Detallada</a>
         </div>
     </section>
 
-    <section class="cta-final" id="contact">
+    <section class="cta-final" id="contacto">
         <div class="cta-box" data-aos="zoom-in">
-            <h2>¿Listo para 10x Tu Negocio?</h2>
-            <p>Únete a más de 5,000 empresas que ya están transformando su modelo de suscripciones</p>
-            <a href="#" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.5rem 4rem;">Prueba Gratis 14 Días</a>
+            <h2>¿Listo para Generar Ingresos Extra?</h2>
+            <p>Únete a los emprendedores que ya están vendiendo posters deportivos sin inventario ni complicaciones</p>
+            <a href="https://wa.me/5212221234567?text=Hola,%20estoy%20listo%20para%20empezar%20con%20Poster%20Shot.%20¿Me%20pueden%20enviar%20más%20información?" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.5rem 4rem;" target="_blank">Hablar con un Asesor Ahora</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Nexus. Redefiniendo el futuro de las suscripciones digitales.</p>
+        <p>&copy; 2025 Poster Shot by UTP. Transforma fotos en posters profesionales.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Inicializar AOS (Animate On Scroll)
         AOS.init({
             duration: 800,
             easing: 'ease-out-cubic',
@@ -672,7 +713,6 @@
             offset: 100
         });
 
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -682,14 +722,13 @@
             }
         });
 
-        // Particles canvas
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 100;
+        const particleCount = 80;
 
         class Particle {
             constructor() {
@@ -711,7 +750,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(124, 58, 237, 0.5)';
+                ctx.fillStyle = 'rgba(43, 65, 98, 0.5)';
                 ctx.fill();
             }
         }
@@ -728,7 +767,6 @@
                 particle.draw();
             });
 
-            // Conectar partículas cercanas
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -737,7 +775,7 @@
 
                     if (distance < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(124, 58, 237, ${0.2 * (1 - distance / 100)})`;
+                        ctx.strokeStyle = `rgba(43, 65, 98, ${0.2 * (1 - distance / 100)})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -751,53 +789,11 @@
 
         animate();
 
-        // Resize canvas
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
 
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
-        });
-
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.1;
-            followerY += (mouseY - followerY) * 0.1;
-            
-            cursorFollower.style.left = followerX + 'px';
-            cursorFollower.style.top = followerY + 'px';
-            
-            requestAnimationFrame(animateFollower);
-        }
-
-        animateFollower();
-
-        // Hover effects
-        document.querySelectorAll('a, button, .feature-card, .pricing-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
-            });
-        });
-
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -808,35 +804,13 @@
             });
         });
 
-        // Parallax effect en hero
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero-content');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                hero.style.opacity = 1 - scrolled / 800;
+            if (hero && scrolled < 800) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - scrolled / 1000;
             }
-        });
-
-        // 3D tilt effect en cards
-        document.querySelectorAll('.feature-card, .pricing-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px) scale(1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-            });
         });
     </script>
 </body>
