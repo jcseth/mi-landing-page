@@ -35,13 +35,56 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* AJUSTES PARA IMÁGENES CARGADAS */
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .nav-logo-img {
+            height: 50px; /* Ajusta el tamaño del logo en el menú */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .hero-poster-img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            object-fit: cover;
+            border: 4px solid white;
+            /* Si la imagen portada es vertical, esto ayuda a que no se estire raro */
+        }
+
+        .product-poster-img {
+            width: 100%;
+            height: 380px; /* Altura fija para uniformidad */
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .product-poster-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Footer Logo Ajuste */
+        .footer-logo-img {
+            height: 80px;
+            margin-bottom: 1rem;
+            /* Filtro para que si el logo tiene fondo blanco, se vea mejor en fondo oscuro (opcional) */
+            /* filter: brightness(0) invert(1); Descomentar si quieres volverlo blanco puro */
+        }
+
         /* ========== NAVBAR ========== */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 5%;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -59,25 +102,7 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .logo-poster {
-            color: var(--navy);
-        }
-
-        .logo-shot {
-            color: var(--red);
-        }
-
-        .logo-diamond {
-            width: 8px;
-            height: 8px;
-            background: var(--red);
-            transform: rotate(45deg);
-            margin: 0 0.2rem;
+            /* Quitamos estilos de texto porque ahora es imagen */
         }
 
         .nav-links {
@@ -207,15 +232,6 @@
             right: 50px;
             top: -50px;
             z-index: 0;
-        }
-
-        .hero-poster-img {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 550px;
-            border-radius: 12px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
         }
 
         .hero-arrow {
@@ -426,13 +442,6 @@
         .benefit-card:hover {
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
             transform: translateY(-5px);
-        }
-
-        .benefit-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: linear-gradient(135deg, var(--navy), var(--dark-navy));
         }
 
         .benefit-image-placeholder {
@@ -918,21 +927,6 @@
             justify-content: center;
         }
 
-        .product-poster {
-            width: 120px;
-            height: 360px;
-            background: linear-gradient(180deg, var(--navy) 0%, var(--dark-navy) 100%);
-            border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 1rem;
-        }
-
         .product-content {
             padding: 2rem 0;
         }
@@ -1091,8 +1085,6 @@
             background: var(--dark-navy);
         }
 
-        /* ========== FINANCING SECTION REMOVED ========== */
-        
         /* ========== FAQ SECTION ========== */
         .faq-section {
             padding: 5rem 5%;
@@ -1232,22 +1224,8 @@
         .footer-logo {
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
-            font-size: 1.3rem;
-            font-weight: 800;
+            justify-content: center;
             margin-bottom: 1rem;
-        }
-
-        .footer-logo .logo-poster {
-            color: white;
-        }
-
-        .footer-logo .logo-shot {
-            color: var(--red);
-        }
-
-        .footer-logo .logo-diamond {
-            background: var(--red);
         }
 
         footer p {
@@ -1336,7 +1314,7 @@
                 flex-wrap: wrap;
             }
 
-            .product-poster {
+            .product-poster-img {
                 width: 100px;
                 height: 300px;
             }
@@ -1351,9 +1329,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo-container">
-                <span class="logo-poster">POSTER</span>
-                <div class="logo-diamond"></div>
-                <span class="logo-shot">SHOT</span>
+                <img src="img/logo horizontal.jpg" alt="Poster Shot Logo" class="nav-logo-img">
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
@@ -1374,11 +1350,7 @@
             <div class="hero-visual" data-aos="fade-left">
                 <div class="hero-shape"></div>
                 <div class="hero-shape-secondary"></div>
-                <div class="benefit-image-placeholder hero-poster-img">
-                    <span style="font-size: 1rem; color: var(--navy); text-align: center; padding: 2rem;">
-                        🖼️<br>Imagen del poster<br>de equipo aquí
-                    </span>
-                </div>
+                <img src="img/portada.jpeg" alt="Poster Principal" class="hero-poster-img">
                 <div class="hero-arrow">↷</div>
             </div>
         </div>
@@ -1652,9 +1624,9 @@
                     <p>Nuestros <strong>Posters de Jugador 2-Poses</strong> presentan dos tomas de retrato de cada atleta — capturando tanto su cara de juego como su personalidad. Estos posters personalizados se imprimen a todo color y están diseñados para destacar con layouts de calidad profesional, gráficos llamativos y texto personalizado.</p>
                 </div>
                 <div class="product-images">
-                    <div class="product-poster">Poster<br>Jugador 1</div>
-                    <div class="product-poster">Poster<br>Jugador 2</div>
-                    <div class="product-poster">Poster<br>Jugador 3</div>
+                    <img src="img/en medio.jpeg" class="product-poster-img" loading="lazy" alt="Jugador 1">
+                    <img src="img/en medio 2.jpeg" class="product-poster-img" loading="lazy" alt="Jugador 2">
+                    <img src="img/en medio 3.jpeg" class="product-poster-img" loading="lazy" alt="Jugador 3">
                 </div>
             </div>
 
@@ -1665,9 +1637,9 @@
                     <p>Nuestros <strong>Posters de Equipo Auto-Generados</strong> muestran todo el roster en un diseño unificado e impresionante. Con solo unos clics, el software toma la foto de cada jugador y crea un poster de equipo personalizado al instante — <strong>sin necesidad de alinear a los niños del equipo torpemente</strong> y sin experiencia en diseño necesaria.</p>
                 </div>
                 <div class="product-images">
-                    <div class="product-poster">Poster<br>Equipo 1</div>
-                    <div class="product-poster">Poster<br>Equipo 2</div>
-                    <div class="product-poster">Poster<br>Equipo 3</div>
+                    <img src="img/en medio 4.jpeg" class="product-poster-img" loading="lazy" alt="Equipo 1">
+                    <img src="img/en medio 5.jpeg" class="product-poster-img" loading="lazy" alt="Equipo 2">
+                    <img src="img/en medio 2.jpeg" class="product-poster-img" loading="lazy" alt="Equipo 3">
                 </div>
             </div>
 
@@ -1830,9 +1802,7 @@
 
     <footer>
         <div class="footer-logo">
-            <span class="logo-poster">POSTER</span>
-            <div class="logo-diamond"></div>
-            <span class="logo-shot">SHOT</span>
+            <img src="img/logo vertical.jpg" alt="Poster Shot Logo" class="footer-logo-img">
         </div>
         <p>&copy; 2025 Poster Shot. Todos los derechos reservados.</p>
     </footer>
