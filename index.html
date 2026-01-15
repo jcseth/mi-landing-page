@@ -24,6 +24,7 @@
             --light-gray: #f5f5f5;
             --dark: #0a0a0a;
             --text-gray: #666;
+            --green: #27ae60;
         }
 
         body {
@@ -40,38 +41,35 @@
             display: block;
         }
 
-        /* --- CORRECCIÓN 1: LOGO NAVBAR MÁS GRANDE --- */
+        /* --- LOGO NAVBAR --- */
         .nav-logo-img {
-            height: 70px; /* Aumentado de 50px a 70px */
+            height: 70px;
             width: auto;
             object-fit: contain;
             display: block;
         }
 
-        /* --- CORRECCIÓN 2: PORTADA ENCIMA DE TODO --- */
+        /* --- PORTADA HERO --- */
         .hero-poster-img {
             width: 100%;
-            max-width: 480px; /* Un poco más grande */
+            max-width: 480px;
             border-radius: 12px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             object-fit: cover;
             border: 4px solid white;
-            
-            /* Esto asegura que esté ENCIMA de las formas de fondo */
             position: relative; 
             z-index: 10; 
         }
 
-        /* --- CORRECCIÓN 3: IMÁGENES PRODUCTOS NO TAPAN TEXTO --- */
+        /* --- IMÁGENES PRODUCTOS --- */
         .product-images {
             display: flex;
-            gap: 10px; /* Espacio entre las 3 fotos */
+            gap: 10px;
             justify-content: center;
-            width: 100%; /* Asegura que no se desborde del contenedor */
+            width: 100%;
         }
 
         .product-poster-img {
-            /* Hacemos que cada imagen ocupe un tercio del espacio disponible */
             width: 32%; 
             height: 350px; 
             object-fit: cover;
@@ -82,7 +80,7 @@
         
         .product-poster-img:hover {
             transform: scale(1.03);
-            z-index: 5; /* Pequeño efecto al pasar el mouse */
+            z-index: 5;
         }
 
         /* Footer Logo */
@@ -96,7 +94,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 0.8rem 5%; /* Ajustado padding vertical para acomodar logo más grande */
+            padding: 0.8rem 5%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             z-index: 1000;
@@ -157,7 +155,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 9rem 5% 5rem; /* Aumentado padding top para que no choque con navbar grande */
+            padding: 9rem 5% 5rem;
             background: #ffffff;
             position: relative;
             overflow: hidden;
@@ -174,7 +172,7 @@
 
         .hero-content {
             position: relative;
-            z-index: 20; /* Texto siempre arriba */
+            z-index: 20;
         }
 
         .hero-tag {
@@ -188,12 +186,23 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--dark);
             letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .hero-cta {
@@ -220,7 +229,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 5; /* Contenedor visual */
+            z-index: 5;
         }
 
         .hero-shape {
@@ -232,7 +241,7 @@
             right: -50px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 0; /* Forma DETRÁS de la foto */
+            z-index: 0;
         }
 
         .hero-shape-secondary {
@@ -243,26 +252,18 @@
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
             right: 50px;
             top: -50px;
-            z-index: 0; /* Forma DETRÁS de la foto */
+            z-index: 0;
         }
 
         .hero-arrow {
             position: absolute;
             top: 15%;
             right: 25%;
-            z-index: 15; /* Flecha ENCIMA de todo */
+            z-index: 15;
             font-size: 3rem;
             color: white;
             transform: rotate(30deg);
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .hero-person {
-            position: absolute;
-            right: -30px;
-            bottom: -20px;
-            z-index: 3;
-            max-height: 450px;
         }
 
         /* ========== WAVE DIVIDER ========== */
@@ -273,7 +274,7 @@
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
         }
 
-        /* ========== STATS + TESTIMONIALS ========== */
+        /* ========== STATS SECTION ========== */
         .stats-section {
             padding: 5rem 5%;
             background: white;
@@ -313,19 +314,37 @@
         .stat-card {
             background: white;
             border: 1px solid #e5e5e5;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2.5rem 2rem;
             text-align: center;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--navy));
         }
 
         .stat-card:hover {
             border-color: var(--red);
             box-shadow: 0 10px 40px rgba(230, 57, 70, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--red);
             margin-bottom: 0.5rem;
@@ -335,6 +354,7 @@
         .stat-label {
             font-size: 1rem;
             color: var(--text-gray);
+            line-height: 1.4;
         }
 
         /* Testimonials */
@@ -349,10 +369,12 @@
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s;
+            position: relative;
         }
 
         .testimonial-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
         .testimonial-stars {
@@ -374,6 +396,20 @@
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
+        }
+
+        .testimonial-result {
+            background: white;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--green);
+        }
+
+        .testimonial-result span {
+            font-weight: 700;
+            color: var(--green);
+            font-size: 1.1rem;
         }
 
         .testimonial-author {
@@ -404,6 +440,15 @@
         .testimonial-role {
             font-size: 0.85rem;
             color: var(--text-gray);
+        }
+
+        .testimonial-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            color: var(--green);
+            margin-top: 0.3rem;
         }
 
         /* ========== BENEFITS SECTION ========== */
@@ -459,7 +504,7 @@
 
         .benefit-image-placeholder {
             width: 100%;
-            height: 200px;
+            height: 120px;
             background: linear-gradient(135deg, var(--light-bg), #e0e7ff);
             display: flex;
             align-items: center;
@@ -473,11 +518,15 @@
         }
 
         .benefit-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--navy);
             margin-bottom: 0.8rem;
-            font-style: italic;
+        }
+
+        .benefit-card h3 .amount {
+            color: var(--red);
+            font-size: 1.4rem;
         }
 
         .benefit-card p {
@@ -577,257 +626,14 @@
             transform: scale(1.1);
         }
 
-        /* ========== CALCULATOR SECTION ========== */
-        .calculator-section {
-            padding: 5rem 5%;
-            background: white;
-            position: relative;
-        }
-
-        .calculator-wave {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(135deg, var(--red) 0%, var(--red) 60%, transparent 60%);
-        }
-
-        .calculator-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            padding-top: 3rem;
-        }
-
-        .calculator-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .calculator-header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .calculator-header p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-        }
-
-        .calculator-body {
-            background: white;
-            border-radius: 16px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        /* --- NUEVOS ESTILOS PARA EL SWITCH Y DESGLOSE --- */
-        .calculator-mode-switch {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .switch-label {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--navy);
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .switch-label.inactive {
-            opacity: 0.5;
-            font-weight: 400;
-        }
-
-        /* The Switch Box */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider-switch {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider-switch:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider-switch {
-            background-color: var(--red);
-        }
-
-        input:focus + .slider-switch {
-            box-shadow: 0 0 1px var(--red);
-        }
-
-        input:checked + .slider-switch:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Estilos de Desglose */
-        .profit-breakdown {
-            margin-top: 1.5rem;
-            display: none; /* Oculto por defecto */
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .profit-breakdown.visible {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        .breakdown-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 0.95rem;
-            color: var(--text-gray);
-        }
-
-        .breakdown-row:last-child {
-            border-bottom: none;
-            padding-top: 1rem;
-            margin-top: 0.5rem;
-            border-top: 2px solid var(--navy);
-            font-weight: 800;
-            color: var(--dark);
-            font-size: 1.2rem;
-        }
-        
-        .breakdown-row.net-profit span:last-child {
-            color: #27ae60; /* Verde para ganancia */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* ----------------------------------------------- */
-
-        .slider-group {
-            margin-bottom: 2.5rem;
-        }
-
-        .slider-label {
-            display: block;
-            text-align: center;
-            color: var(--red);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .slider-container {
-            position: relative;
-            padding-top: 2rem;
-        }
-
-        .slider-value {
-            position: absolute;
-            top: 0;
-            background: var(--red);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transform: translateX(-50%);
-            white-space: nowrap;
-        }
-
-        .slider {
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: #e5e5e5;
-            outline: none;
-            -webkit-appearance: none;
-            cursor: pointer;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--navy);
-            cursor: pointer;
-            border: 4px solid white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .calculator-result {
-            background: var(--light-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .calculator-result p {
-            font-size: 1rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .result-amount {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -0.02em;
-        }
-
-        /* ========== HOW IT WORKS ========== */
+        /* ========== HOW IT WORKS - NUEVO DISEÑO ========== */
         .how-it-works {
-            padding: 5rem 5%;
-            background: white;
+            padding: 6rem 5%;
+            background: var(--light-bg);
         }
 
         .how-container {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -835,30 +641,67 @@
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .how-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .how-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem 0;
+        .how-subtitle {
+            text-align: center;
+            color: var(--text-gray);
             font-size: 1.1rem;
-            color: var(--dark);
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 3rem;
         }
 
-        .how-list li:last-child {
-            border-bottom: none;
+        .how-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
-        .how-number {
+        .how-timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), var(--navy));
+            z-index: 0;
+        }
+
+        .how-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--red);
+            transition: all 0.3s;
+        }
+
+        .how-step:hover .step-icon {
+            transform: scale(1.1);
             background: var(--red);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: calc(50% - 50px);
+            background: var(--navy);
             color: white;
             width: 28px;
             height: 28px;
@@ -867,13 +710,54 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
+            font-size: 0.85rem;
+        }
+
+        .how-step h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .how-step p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .how-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .how-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .how-detail-item span {
+            font-size: 1.3rem;
+        }
+
+        .how-cta {
+            text-align: center;
         }
 
         /* ========== MARQUEE ========== */
         .marquee-section {
-            background: var(--light-bg);
+            background: var(--dark-navy);
             padding: 1.5rem 0;
             overflow: hidden;
         }
@@ -892,13 +776,13 @@
         }
 
         .marquee-text {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
         }
 
         .marquee-star {
-            color: var(--navy);
+            color: var(--red);
             font-size: 1rem;
         }
 
@@ -921,7 +805,7 @@
         .product-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem; /* Aumentado gap para evitar solapamiento */
+            gap: 5rem;
             align-items: center;
             margin-bottom: 5rem;
         }
@@ -965,14 +849,93 @@
             color: var(--dark);
         }
 
-        /* ========== PRICING SECTION ========== */
-        .pricing-section {
-            padding: 6rem 5%;
+        /* ========== PARA QUIEN ES - NUEVA SECCIÓN ========== */
+        .for-who-section {
+            padding: 5rem 5%;
             background: var(--light-bg);
         }
 
+        .for-who-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .for-who-section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .for-who-yes, .for-who-no {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .for-who-yes {
+            border: 2px solid var(--green);
+        }
+
+        .for-who-no {
+            border: 2px solid var(--red);
+        }
+
+        .for-who-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .for-who-yes .for-who-title {
+            color: var(--green);
+        }
+
+        .for-who-no .for-who-title {
+            color: var(--red);
+        }
+
+        .for-who-list {
+            list-style: none;
+        }
+
+        .for-who-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .for-who-list li:last-child {
+            border-bottom: none;
+        }
+
+        .for-who-list li span {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
         .pricing-container {
-            max-width: 1000px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -993,27 +956,13 @@
             font-size: 1.1rem;
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
         .pricing-card {
             background: white;
-            border-radius: 16px;
-            padding: 2.5rem;
+            border-radius: 20px;
+            padding: 3rem;
             position: relative;
-            border: 1px solid #e5e5e5;
-            transition: all 0.3s;
-        }
-
-        .pricing-card:hover {
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        .pricing-card.featured {
             border: 2px solid var(--red);
+            box-shadow: 0 20px 60px rgba(230, 57, 70, 0.15);
         }
 
         .pricing-badge {
@@ -1025,24 +974,33 @@
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .pricing-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .pricing-amount {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
         .pricing-features {
@@ -1057,7 +1015,7 @@
             padding: 0.8rem 0;
             border-bottom: 1px solid #f0f0f0;
             color: var(--dark);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .pricing-features li:last-child {
@@ -1065,31 +1023,85 @@
         }
 
         .check-icon {
-            color: var(--red);
+            color: var(--green);
             font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pricing-bonus {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px dashed #ffc107;
+        }
+
+        .pricing-bonus-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #f57c00;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-bonus-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
         }
 
         .pricing-card .btn-primary {
             width: 100%;
             text-align: center;
+            font-size: 1.1rem;
+            padding: 1.2rem 2rem;
         }
 
-        .pricing-card .btn-secondary {
-            width: 100%;
+        /* ========== GARANTÍA SECTION ========== */
+        .guarantee-section {
+            padding: 4rem 5%;
+            background: var(--light-bg);
+        }
+
+        .guarantee-container {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            background: var(--navy);
-            color: white;
-            padding: 1.1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            display: inline-block;
-            transition: all 0.3s;
         }
 
-        .pricing-card .btn-secondary:hover {
-            background: var(--dark-navy);
+        .guarantee-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-section h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-highlight {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            display: inline-block;
+            border-left: 4px solid var(--green);
+        }
+
+        .guarantee-highlight p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--dark);
         }
 
         /* ========== FAQ SECTION ========== */
@@ -1183,7 +1195,7 @@
         /* ========== CTA FINAL ========== */
         .cta-section {
             padding: 5rem 5%;
-            background: var(--light-bg);
+            background: var(--dark-navy);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -1199,31 +1211,31 @@
         .cta-section h2 {
             font-size: clamp(1.8rem, 4vw, 2.8rem);
             font-weight: 800;
-            color: var(--dark);
+            color: white;
             margin-bottom: 1rem;
-            font-style: italic;
         }
 
         .cta-section p {
             font-size: 1.2rem;
-            color: var(--text-gray);
+            color: rgba(255,255,255,0.8);
             margin-bottom: 2rem;
         }
 
-        .cta-wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(90deg, var(--red) 0%, var(--red) 40%, var(--navy) 40%, var(--navy) 100%);
-            clip-path: polygon(0 100%, 100% 100%, 100% 0, 50% 50%, 0 20%);
+        .cta-section .btn-primary {
+            background: var(--red);
+            font-size: 1.1rem;
+            padding: 1.2rem 3rem;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: white;
+            color: var(--dark-navy);
         }
 
         /* ========== FOOTER ========== */
         footer {
             padding: 3rem 5%;
-            background: var(--dark-navy);
+            background: var(--dark);
             text-align: center;
             color: white;
         }
@@ -1282,14 +1294,18 @@
                 transform: translate(50%, -50%);
             }
 
-            .hero-person {
-                display: none;
-            }
-
             .stats-grid,
             .testimonials-grid,
             .benefits-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .how-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-timeline::before {
+                display: none;
             }
 
             .product-row,
@@ -1298,16 +1314,16 @@
                 direction: ltr;
             }
             
-            /* Ajuste imágenes responsive */
             .product-images {
                 flex-wrap: wrap;
             }
+
             .product-poster-img {
-                width: 30%; /* Mantener 3 por fila si caben */
-                height: 250px; /* Reducir altura en tablets */
+                width: 30%;
+                height: 250px;
             }
 
-            .pricing-grid {
+            .for-who-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1325,12 +1341,20 @@
                 width: 280px;
                 height: 280px;
             }
+
+            .how-timeline {
+                grid-template-columns: 1fr;
+            }
             
-            /* En móviles, una imagen por fila quizás sea mejor o dos pequeñas */
             .product-poster-img {
-                width: 100%; /* Imagen completa en móvil */
+                width: 100%;
                 max-width: 200px;
                 height: 300px;
+            }
+
+            .how-details {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -1350,16 +1374,18 @@
                 <li><a href="#como-funciona">Cómo Funciona</a></li>
                 <li><a href="#precios">Precios</a></li>
             </ul>
-            <a href="https://wa.me/5212221234567" class="nav-btn" target="_blank">Solicitar Info</a>
+            <a href="https://wa.me/5212221234567" class="nav-btn" target="_blank">Quiero Empezar</a>
         </div>
     </nav>
 
+    <!-- ========== HERO SECTION - OPCIÓN A ========== -->
     <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-right">
-                <span class="hero-tag">Emprendimiento Simplificado</span>
-                <h1>Genera Ingresos vendiendo posters deportivos.</h1>
-                <a href="https://wa.me/5212221234567?text=Quiero%20información%20sobre%20Poster%20Shot" class="hero-cta" target="_blank">Solicitar Información</a>
+                <span class="hero-tag">Tu Negocio de Fin de Semana</span>
+                <h1>Gana <span class="highlight">$5,000 a $15,000</span> extra al mes vendiendo recuerdos deportivos que las familias aman</h1>
+                <p class="hero-subtitle">Sin inventario. Sin experiencia. Tú decides cuándo y cuánto trabajar.</p>
+                <a href="https://wa.me/5212221234567?text=Quiero%20ver%20cómo%20funciona%20Poster%20Shot" class="hero-cta" target="_blank">Ver Cómo Funciona →</a>
             </div>
             <div class="hero-visual" data-aos="fade-left">
                 <div class="hero-shape"></div>
@@ -1372,64 +1398,81 @@
 
     <div class="wave-divider"></div>
 
+    <!-- ========== STATS SECTION - OPCIÓN 2 ========== -->
     <section class="stats-section">
         <div class="stats-container">
             <div class="stats-header" data-aos="fade-up">
                 <h2>El negocio que desearías haber empezado antes</h2>
-                <p>Mientras otros siguen pensándolo, cientos ya están generando ingresos cada fin de semana. Sin experiencia. Sin inventario. Sin excusas.</p>
+                <p>Mientras otros siguen pensándolo, emprendedores como tú ya están generando ingresos cada semana.</p>
             </div>
 
             <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-card">
-                    <div class="stat-number">+5,000</div>
-                    <div class="stat-label">Posters Personalizados</div>
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">$8,500</div>
+                    <div class="stat-label">Promedio de ventas<br>por torneo</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Ventas Para ROI</div>
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-number">1 Evento</div>
+                    <div class="stat-label">Para recuperar<br>tu inversión mensual</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">📦</div>
                     <div class="stat-number">0</div>
-                    <div class="stat-label">Inventario Necesario</div>
+                    <div class="stat-label">Inventario<br>que necesitas</div>
                 </div>
             </div>
 
+            <!-- ========== TESTIMONIOS - DISEÑO MEJORADO ========== -->
             <div class="testimonials-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="testimonial-card">
                     <div class="testimonial-stars">★★★★★</div>
-                    <h4>De Maestros a Empresarios</h4>
-                    <p>El software de Poster Shot convirtió lo que pensamos sería un ingreso extra en un negocio serio.</p>
+                    <h4>"En mi primer torneo vendí 23 posters"</h4>
+                    <div class="testimonial-result">
+                        <span>$11,500 en un sábado</span>
+                    </div>
+                    <p>Llegué sin saber nada de fotografía. Solo seguí el sistema y las familias hacían fila para comprar.</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-avatar">RM</div>
                         <div>
-                            <div class="testimonial-name">María & Roberto</div>
-                            <div class="testimonial-role">Posters MX</div>
+                            <div class="testimonial-name">Roberto Méndez</div>
+                            <div class="testimonial-role">Querétaro</div>
+                            <div class="testimonial-verified">✓ Verificado</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-stars">★★★★★</div>
-                    <h4>¡Altamente Recomendado!</h4>
-                    <p>Cada entrenador y padre preguntó cómo hicimos que los posters del equipo se vieran tan bien.</p>
+                    <h4>"Los entrenadores me buscan"</h4>
+                    <div class="testimonial-result">
+                        <span>3 torneos fijos al mes</span>
+                    </div>
+                    <p>Cada entrenador y padre preguntó cómo hicimos que los posters del equipo se vieran tan profesionales.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">LC</div>
                         <div>
                             <div class="testimonial-name">Luis Campos</div>
-                            <div class="testimonial-role">Fotos Deportivas LC</div>
+                            <div class="testimonial-role">Guadalajara</div>
+                            <div class="testimonial-verified">✓ Verificado</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-stars">★★★★★</div>
-                    <h4>Sistema Listo Para Eventos</h4>
-                    <p>Es como tener un mini negocio en una caja — solo necesité mi celular, una laptop y el software.</p>
+                    <h4>"Negocio completo en una caja"</h4>
+                    <div class="testimonial-result">
+                        <span>ROI en 2 semanas</span>
+                    </div>
+                    <p>Es como tener un mini negocio listo — solo necesité mi celular, una laptop y el software.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">AG</div>
                         <div>
                             <div class="testimonial-name">Ana García</div>
-                            <div class="testimonial-role">PosterPro Puebla</div>
+                            <div class="testimonial-role">Puebla</div>
+                            <div class="testimonial-verified">✓ Verificado</div>
                         </div>
                     </div>
                 </div>
@@ -1437,67 +1480,68 @@
         </div>
     </section>
 
+    <!-- ========== BENEFITS SECTION - ACTUALIZADA ========== -->
     <section class="benefits-section">
         <div class="benefits-container">
             <div class="benefits-header" data-aos="fade-up">
                 <h2>Ingresos extra que se adaptan a tu vida.</h2>
-                <p>Poster Shot permite a cualquiera ganar ingresos extra los fines de semana creando posters deportivos personalizados que las familias aman — sin tienda, sin experiencia requerida.</p>
+                <p>Poster Shot permite a cualquiera ganar dinero creando posters deportivos personalizados que las familias aman — sin tienda, sin experiencia requerida.</p>
             </div>
 
             <div class="benefits-grid">
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="benefit-image-placeholder">💰</div>
                     <div class="benefit-content">
-                        <h3>Alto Potencial de Ganancias</h3>
-                        <p>Los eventos deportivos atraen cientos de familias listas para comprar recuerdos en el momento.</p>
+                        <h3><span class="amount">$500+</span> por venta</h3>
+                        <p>Precio sugerido $1,000 - Costo $500 = Tu bolsillo. Sin complicaciones, sin negociar.</p>
                     </div>
                 </div>
 
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="benefit-image-placeholder">📅</div>
+                    <div class="benefit-image-placeholder">🎓</div>
                     <div class="benefit-content">
-                        <h3>Horario Flexible</h3>
-                        <p>Genera ingresos adicionales con eventos que ocurren principalmente los fines de semana, sin interferir con tu trabajo de lunes a viernes.</p>
+                        <h3>Cero experiencia necesaria</h3>
+                        <p>Si sabes usar WhatsApp, puedes usar nuestro software. Es así de simple.</p>
                     </div>
                 </div>
 
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="benefit-image-placeholder">🎯</div>
+                    <div class="benefit-image-placeholder">📦</div>
                     <div class="benefit-content">
-                        <h3>Diseñado Para Principiantes</h3>
-                        <p>¿Nuevo en los negocios? ¡Genial! Te ayudamos a llegar a tu primer evento. No se necesita experiencia en fotografía o diseño.</p>
+                        <h3>Sin inventario</h3>
+                        <p>Nosotros imprimimos y enviamos directo al cliente. Tú solo vendes.</p>
                     </div>
                 </div>
             </div>
 
             <div class="benefits-grid" style="margin-top: 2rem;">
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="benefit-image-placeholder">💵</div>
+                    <div class="benefit-image-placeholder">🚀</div>
                     <div class="benefit-content">
-                        <h3>Bajos Costos Iniciales</h3>
-                        <p>Solo necesitas un smartphone, laptop y el software.</p>
+                        <h3>Empieza esta semana</h3>
+                        <p>Alta hoy, vende mañana. Sin cursos largos ni capacitaciones eternas.</p>
                     </div>
                 </div>
 
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="benefit-image-placeholder">📈</div>
                     <div class="benefit-content">
-                        <h3>Crecimiento Escalable</h3>
-                        <p>Comienza con un evento y crece a múltiples fines de semana, ubicaciones, o incluso un negocio de tiempo completo.</p>
+                        <h3>Crecimiento escalable</h3>
+                        <p>Comienza con un evento y crece a múltiples ubicaciones o incluso un negocio de tiempo completo.</p>
                     </div>
                 </div>
 
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="benefit-image-placeholder">🏠</div>
+                    <div class="benefit-image-placeholder">🏟️</div>
                     <div class="benefit-content">
-                        <h3>Opera Desde Casa</h3>
-                        <p>Sin tienda física, sin renta, sin grandes gastos. Todo tu suministro, software y configuración cabe en tu casa o garage.</p>
+                        <h3>+50,000 eventos al año</h3>
+                        <p>Solo en México hay miles de torneos deportivos cada semana. Tu mercado potencial es enorme.</p>
                     </div>
                 </div>
             </div>
 
             <div class="benefits-cta" data-aos="fade-up" style="margin-top: 3rem;">
-                <a href="https://wa.me/5212221234567" class="btn-primary" target="_blank">Solicitar Información</a>
+                <a href="https://wa.me/5212221234567?text=Quiero%20empezar%20mi%20prueba%20con%20Poster%20Shot" class="btn-primary" target="_blank">Empezar Mi Prueba →</a>
             </div>
         </div>
     </section>
@@ -1514,93 +1558,57 @@
         </div>
     </section>
 
-    <section class="calculator-section" id="calculadora">
-        <div class="calculator-wave"></div>
-        <div class="calculator-container" data-aos="fade-up">
-            <div class="calculator-header">
-                <h2>Calcula Tus Ganancias</h2>
-                <p>Usa los controles para estimar tus ventas y utilidad por evento.</p>
-            </div>
-
-            <div class="calculator-body">
-                <div class="calculator-mode-switch">
-                    <span class="switch-label" id="label-subscription">Solo Suscripción</span>
-                    <label class="switch">
-                        <input type="checkbox" id="business-mode-toggle">
-                        <span class="slider-switch round"></span>
-                    </label>
-                    <span class="switch-label inactive" id="label-full-business">Negocio Completo (+Impresora)</span>
-                </div>
-
-                <div class="slider-group">
-                    <label class="slider-label">Número de Equipos</label>
-                    <div class="slider-container">
-                        <span class="slider-value" id="teams-value" style="left: 0%;">10 Equipos</span>
-                        <input type="range" min="10" max="250" value="10" class="slider" id="teams-slider">
-                    </div>
-                </div>
-
-                <div class="slider-group">
-                    <label class="slider-label">Ventas Promedio Por Equipo</label>
-                    <div class="slider-container">
-                        <span class="slider-value" id="sales-value" style="left: 0%;">300</span>
-                        <input type="range" min="300" max="1500" value="300" step="50" class="slider" id="sales-slider">
-                    </div>
-                </div>
-
-                <div class="calculator-result">
-                    <p>Ventas Totales por Evento</p>
-                    <div class="result-amount" id="result-amount">$3,000</div>
-
-                    <div class="profit-breakdown" id="profit-breakdown">
-                        <div class="breakdown-row">
-                            <span>Fee (15%)</span>
-                            <span id="fee-value">-$450</span>
-                        </div>
-                        <div class="breakdown-row">
-                            <span>Costos (15%)</span>
-                            <span id="costs-value">-$450</span>
-                        </div>
-                        <div class="breakdown-row">
-                            <span>Gastos (20%)</span>
-                            <span id="expenses-value">-$600</span>
-                        </div>
-                        <div class="breakdown-row net-profit">
-                            <span>Utilidad Neta</span>
-                            <span id="net-profit-value">$1,500</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- ========== HOW IT WORKS - NUEVO DISEÑO VISUAL ========== -->
     <section class="how-it-works" id="como-funciona">
         <div class="how-container" data-aos="fade-up">
             <h2>Cómo Funciona</h2>
-            <ol class="how-list">
-                <li>
-                    <span class="how-number">1</span>
-                    El cliente envía sus fotos (frente y espalda).
-                </li>
-                <li>
-                    <span class="how-number">2</span>
-                    Subes las fotos al sistema desde cualquier dispositivo.
-                </li>
-                <li>
-                    <span class="how-number">3</span>
-                    Editas y personalizas todo con el software.
-                </li>
-                <li>
-                    <span class="how-number">4</span>
-                    Imprimimos en marco premium y enviamos directo a la casa del cliente.
-                </li>
-                <li>
-                    <span class="how-number">5</span>
-                    Cobras $1,000 → Costo $500 → <strong>$500 de utilidad libre para ti</strong> 💰
-                </li>
-            </ol>
-            <a href="https://wa.me/5212221234567" class="btn-primary" target="_blank">Solicitar Información</a>
+            <p class="how-subtitle">De foto a poster profesional en minutos. Así de simple.</p>
+            
+            <div class="how-timeline">
+                <div class="how-step">
+                    <div class="step-icon">📸</div>
+                    <span class="step-number">1</span>
+                    <h4>Captura</h4>
+                    <p>Toma las fotos del jugador en el evento o recíbelas por WhatsApp</p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="step-icon">💻</div>
+                    <span class="step-number">2</span>
+                    <h4>Sube</h4>
+                    <p>Carga las fotos al software desde cualquier dispositivo</p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="step-icon">🖨️</div>
+                    <span class="step-number">3</span>
+                    <h4>Imprimimos</h4>
+                    <p>Creamos el poster en marco premium y enviamos directo</p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="step-icon">💰</div>
+                    <span class="step-number">4</span>
+                    <h4>Tú Cobras</h4>
+                    <p>Ganas $500+ por cada poster vendido. Así de fácil.</p>
+                </div>
+            </div>
+
+            <div class="how-details">
+                <div class="how-detail-item">
+                    <span>⏱️</span> Tiempo por poster: ~15 minutos
+                </div>
+                <div class="how-detail-item">
+                    <span>📍</span> Entrega: 3-5 días a domicilio
+                </div>
+                <div class="how-detail-item">
+                    <span>💵</span> Tu ganancia: $500+ por venta
+                </div>
+            </div>
+
+            <div class="how-cta">
+                <a href="https://wa.me/5212221234567?text=Quiero%20ver%20una%20demo%20del%20software" class="btn-primary" target="_blank">Ver Demo del Software →</a>
+            </div>
         </div>
     </section>
 
@@ -1615,6 +1623,8 @@
                 <span class="marquee-star">★</span>
                 <span class="marquee-text">Sin inventario</span>
                 <span class="marquee-star">★</span>
+                <span class="marquee-text">15 leads gratis al empezar</span>
+                <span class="marquee-star">★</span>
             </div>
             <div class="marquee-item">
                 <span class="marquee-text">Envío incluido</span>
@@ -1624,6 +1634,8 @@
                 <span class="marquee-text">Soporte 24/7</span>
                 <span class="marquee-star">★</span>
                 <span class="marquee-text">Sin inventario</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">15 leads gratis al empezar</span>
                 <span class="marquee-star">★</span>
             </div>
         </div>
@@ -1658,49 +1670,88 @@
             </div>
 
             <div style="text-align: center; margin-top: 2rem;" data-aos="fade-up">
-                <a href="https://wa.me/5212221234567" class="btn-primary" target="_blank">Solicitar Información</a>
+                <a href="https://wa.me/5212221234567?text=Quiero%20ver%20ejemplos%20de%20posters" class="btn-primary" target="_blank">Ver Más Ejemplos →</a>
             </div>
         </div>
     </section>
 
+    <!-- ========== PARA QUIÉN ES - NUEVA SECCIÓN ========== -->
+    <section class="for-who-section">
+        <div class="for-who-container" data-aos="fade-up">
+            <h2>¿Es Poster Shot Para Ti?</h2>
+            
+            <div class="for-who-grid">
+                <div class="for-who-yes">
+                    <div class="for-who-title">
+                        <span>✅</span> Poster Shot ES para ti si...
+                    </div>
+                    <ul class="for-who-list">
+                        <li><span>👨‍👩‍👧</span> Eres padre/madre de familia buscando ingresos extra</li>
+                        <li><span>📸</span> Eres fotógrafo y quieres diversificar tus servicios</li>
+                        <li><span>🏃</span> Eres entrenador con acceso a equipos y torneos</li>
+                        <li><span>💼</span> Buscas un negocio flexible sin horarios fijos</li>
+                        <li><span>🌐</span> Quieres vender online a todo México</li>
+                    </ul>
+                </div>
+                
+                <div class="for-who-no">
+                    <div class="for-who-title">
+                        <span>❌</span> NO es para ti si...
+                    </div>
+                    <ul class="for-who-list">
+                        <li><span>🚫</span> Buscas dinero fácil sin ningún esfuerzo</li>
+                        <li><span>🚫</span> No estás dispuesto a aprender algo nuevo</li>
+                        <li><span>🚫</span> No puedes invertir $1,000 pesos al mes</li>
+                        <li><span>🚫</span> Esperas resultados sin tomar acción</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION - SOLO STARTER ========== -->
     <section class="pricing-section" id="precios">
         <div class="pricing-container">
             <div class="pricing-header" data-aos="fade-up">
-                <h2>Planes de Lanzamiento</h2>
-                <p>Inicia tu negocio hoy mismo.</p>
+                <h2>Plan de Lanzamiento</h2>
+                <p>Todo lo que necesitas para empezar a generar ingresos.</p>
             </div>
 
-            <div class="pricing-grid" data-aos="fade-up" data-aos-delay="100">
-                <div class="pricing-card">
-                    <h3>Plan Básico</h3>
-                    <div class="pricing-amount">$1,000<span style="font-size: 1rem; color: var(--text-gray);">/mes</span></div>
-                    <ul class="pricing-features">
-                        <li><span class="check-icon">✓</span> Software libre sin limites</li>
-                        <li><span class="check-icon">✓</span> Plantillas de todos los deportes</li>
-                        <li><span class="check-icon">✓</span> Edición profesional automática</li>
-                        <li><span class="check-icon">✓</span> Impresión marco 8x32, 8x10</li>
-                        <li><span class="check-icon">✓</span> Envío directo a clientes</li>
-                        <li><span class="check-icon">✓</span> Soporte por Whats</li>
-                    </ul>
-                    <a href="https://wa.me/5212221234567" class="btn-secondary" target="_blank">Empezar</a>
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="pricing-badge">🔥 Oferta de Lanzamiento</div>
+                <h3>Plan Starter</h3>
+                <div class="pricing-amount">$1,000</div>
+                <div class="pricing-period">pesos mexicanos / mes</div>
+                
+                <ul class="pricing-features">
+                    <li><span class="check-icon">✓</span> Software completo sin límites</li>
+                    <li><span class="check-icon">✓</span> Plantillas de todos los deportes</li>
+                    <li><span class="check-icon">✓</span> Edición profesional automática</li>
+                    <li><span class="check-icon">✓</span> Impresión en marco premium (8x32, 8x10)</li>
+                    <li><span class="check-icon">✓</span> Envío directo a tus clientes</li>
+                    <li><span class="check-icon">✓</span> Soporte prioritario por WhatsApp</li>
+                    <li><span class="check-icon">✓</span> Nuevas plantillas cada semana</li>
+                </ul>
+
+                <div class="pricing-bonus">
+                    <div class="pricing-bonus-title">🎁 Bonus de Bienvenida</div>
+                    <div class="pricing-bonus-text">15 leads listos para contactar y hacer tus primeras ventas online</div>
                 </div>
 
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">MÁS POPULAR</div>
-                    <h3>Negocio en Caja</h3>
-                    <div class="pricing-amount">$180,000<span style="font-size: 1rem; color: var(--text-gray);">único</span></div>
-                    <ul class="pricing-features">
-                        <li><span class="check-icon">✓</span> Impresora fujifilm dx100</li>
-                        <li><span class="check-icon">✓</span> Acceso total al software</li>
-                        <li><span class="check-icon">✓</span> Manejo de vendedores</li>
-                        <li><span class="check-icon">✓</span> Set de 6 tintas + cartucho mantenimiento</li>
-                        <li><span class="check-icon">✓</span> Carpa</li>
-                        <li><span class="check-icon">✓</span> 60 Marcos 8x32</li>
-                        <li><span class="check-icon">✓</span> Guias</li>
-                        <li><span class="check-icon">✓</span> Y mas...</li>
-                    </ul>
-                    <a href="https://wa.me/5212221234567" class="btn-primary" target="_blank">Empezar</a>
-                </div>
+                <a href="https://wa.me/5212221234567?text=Quiero%20activar%20mi%20Plan%20Starter%20de%20Poster%20Shot" class="btn-primary" target="_blank">Activar Mi Plan →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GARANTÍA SECTION ========== -->
+    <section class="guarantee-section">
+        <div class="guarantee-container" data-aos="fade-up">
+            <div class="guarantee-icon">🛡️</div>
+            <h2>Garantía: Recupera Tu Inversión o Te Devolvemos Tu Dinero</h2>
+            <p>Si no recuperas tu inversión en el primer mes, te devolvemos tu dinero. Sin preguntas, sin complicaciones.</p>
+            
+            <div class="guarantee-highlight">
+                <p>💡 La suscripción cuesta $1,000. Ganas $500 por poster. <strong>Solo necesitas vender 2 posters para recuperar tu inversión.</strong></p>
             </div>
         </div>
     </section>
@@ -1736,11 +1787,11 @@
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        ¿Para quién es esto?
+                        ¿Cuánto puedo ganar realmente?
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Para cualquier persona que quiera generar ingresos extra vendiendo posters deportivos: emprendedores, padres de familia, fotógrafos, entrenadores, o cualquiera con acceso a eventos deportivos.</p>
+                        <p>Depende de ti. Cada poster tiene una ganancia de $500+. En un torneo típico puedes vender 10-30 posters ($5,000 - $15,000). Algunos de nuestros usuarios más activos generan $30,000+ al mes.</p>
                     </div>
                 </div>
             </div>
@@ -1780,38 +1831,48 @@
             </div>
 
             <div class="faq-category" data-aos="fade-up">
-                <div class="faq-category-title">PRECIOS Y CRÉDITOS</div>
+                <div class="faq-category-title">PRECIOS Y GARANTÍA</div>
                 
                 <div class="faq-item">
                     <button class="faq-question">
-                        ¿Qué es un crédito?
+                        ¿Cuánto cuesta empezar?
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Un crédito equivale a un poster completo (edición + impresión + marco + envío). Cuando vendes un poster, usas un crédito.</p>
+                        <p>El Plan Starter es de $1,000 MXN/mes. Con solo vender 2 posters recuperas tu inversión mensual. Todo lo demás es ganancia.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        ¿Cuánto cuesta?
+                        ¿Qué pasa si no vendo nada?
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>El plan básico es de $1,000 MXN/mes con 10 créditos incluidos. También ofrecemos el paquete "Negocio en Caja" por $180,000 que incluye impresora y materiales.</p>
+                        <p>Tenemos garantía de devolución. Si no recuperas tu inversión en el primer mes, te devolvemos tu dinero. Sin preguntas.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Puedo vender online sin ir a eventos?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>¡Sí! Muchos de nuestros usuarios venden 100% online. Los clientes te envían las fotos por WhatsApp y tú creas el poster desde casa.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ========== CTA FINAL ========== -->
     <section class="cta-section">
         <div class="cta-content" data-aos="fade-up">
-            <h2>Experimenta la Diferencia Tú Mismo</h2>
-            <p>Descubre lo fácil que es crear posters deportivos personalizados que se venden solos.</p>
-            <a href="https://wa.me/5212221234567" class="btn-primary" target="_blank">Solicitar Información</a>
+            <h2>¿Listo Para Empezar Tu Negocio?</h2>
+            <p>Únete a los emprendedores que ya están generando ingresos con Poster Shot.</p>
+            <a href="https://wa.me/5212221234567?text=Quiero%20agendar%20una%20llamada%20para%20conocer%20más%20de%20Poster%20Shot" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
         </div>
-        <div class="cta-wave"></div>
     </section>
 
     <footer>
@@ -1830,73 +1891,6 @@
             once: true,
             offset: 80
         });
-
-        // Calculator functionality
-        const teamsSlider = document.getElementById('teams-slider');
-        const salesSlider = document.getElementById('sales-slider');
-        const teamsValue = document.getElementById('teams-value');
-        const salesValue = document.getElementById('sales-value');
-        const resultAmount = document.getElementById('result-amount');
-        
-        // Elementos nuevos para el modo de negocio
-        const modeToggle = document.getElementById('business-mode-toggle');
-        const labelSub = document.getElementById('label-subscription');
-        const labelFull = document.getElementById('label-full-business');
-        const profitBreakdown = document.getElementById('profit-breakdown');
-        
-        const feeValue = document.getElementById('fee-value');
-        const costsValue = document.getElementById('costs-value');
-        const expensesValue = document.getElementById('expenses-value');
-        const netProfitValue = document.getElementById('net-profit-value');
-
-        function updateCalculator() {
-            const teams = parseInt(teamsSlider.value);
-            const sales = parseInt(salesSlider.value);
-            const total = teams * sales;
-            const isFullBusiness = modeToggle.checked;
-
-            // Actualizar etiquetas de sliders
-            teamsValue.textContent = teams + ' Equipos';
-            teamsValue.style.left = ((teams - 10) / 240 * 100) + '%';
-
-            salesValue.textContent = '$' + sales;
-            salesValue.style.left = ((sales - 300) / 1200 * 100) + '%';
-
-            resultAmount.textContent = '$' + total.toLocaleString('es-MX');
-
-            // Lógica de "Negocio Completo"
-            if (isFullBusiness) {
-                // Hacer visibles los labels correctos
-                labelSub.classList.add('inactive');
-                labelFull.classList.remove('inactive');
-                profitBreakdown.classList.add('visible');
-
-                // Cálculos
-                const fee = total * 0.15;
-                const costs = total * 0.15;
-                const expenses = total * 0.20;
-                const netProfit = total - (fee + costs + expenses);
-
-                // Actualizar DOM
-                feeValue.textContent = '-$' + fee.toLocaleString('es-MX', {maximumFractionDigits: 0});
-                costsValue.textContent = '-$' + costs.toLocaleString('es-MX', {maximumFractionDigits: 0});
-                expensesValue.textContent = '-$' + expenses.toLocaleString('es-MX', {maximumFractionDigits: 0});
-                netProfitValue.textContent = '$' + netProfit.toLocaleString('es-MX', {maximumFractionDigits: 0});
-
-            } else {
-                // Modo Solo Suscripción
-                labelSub.classList.remove('inactive');
-                labelFull.classList.add('inactive');
-                profitBreakdown.classList.remove('visible');
-            }
-        }
-
-        teamsSlider.addEventListener('input', updateCalculator);
-        salesSlider.addEventListener('input', updateCalculator);
-        modeToggle.addEventListener('change', updateCalculator);
-
-        // Inicializar
-        updateCalculator();
 
         // FAQ functionality
         document.querySelectorAll('.faq-question').forEach(button => {
