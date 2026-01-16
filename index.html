@@ -535,6 +535,15 @@
             line-height: 1.7;
         }
 
+        .benefit-breakdown {
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .benefit-breakdown .line {
+            display: block;
+        }
+
         .benefits-cta {
             text-align: center;
         }
@@ -1093,7 +1102,7 @@
         }
 
         .pricing-container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -1114,11 +1123,29 @@
             font-size: 1.1rem;
         }
 
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
         .pricing-card {
             background: white;
             border-radius: 20px;
-            padding: 3rem;
+            padding: 2.5rem 2rem;
             position: relative;
+            border: 2px solid #e5e5e5;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.featured {
             border: 2px solid var(--red);
             box-shadow: 0 20px 60px rgba(230, 57, 70, 0.15);
         }
@@ -1132,14 +1159,15 @@
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            white-space: nowrap;
         }
 
         .pricing-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--dark);
             margin-bottom: 0.5rem;
@@ -1147,33 +1175,33 @@
         }
 
         .pricing-amount {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             text-align: center;
         }
 
         .pricing-period {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-gray);
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .pricing-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .pricing-features li {
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            padding: 0.8rem 0;
+            padding: 0.6rem 0;
             border-bottom: 1px solid #f0f0f0;
             color: var(--dark);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .pricing-features li:last-child {
@@ -1183,29 +1211,29 @@
         .check-icon {
             color: var(--green);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .pricing-bonus {
             background: linear-gradient(135deg, #fff8e1, #ffecb3);
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
             border: 1px dashed #ffc107;
         }
 
         .pricing-bonus-title {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #f57c00;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .pricing-bonus-text {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--dark);
         }
@@ -1213,8 +1241,36 @@
         .pricing-card .btn-primary {
             width: 100%;
             text-align: center;
-            font-size: 1.1rem;
-            padding: 1.2rem 2rem;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+        }
+
+        .pricing-card .btn-secondary {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--navy);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pricing-card .btn-secondary:hover {
+            background: var(--dark-navy);
+            transform: translateY(-2px);
+        }
+
+        /* Second row of pricing */
+        .pricing-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         /* ========== GARANTÍA SECTION ========== */
@@ -1484,6 +1540,11 @@
             .for-who-grid {
                 grid-template-columns: 1fr;
             }
+
+            .pricing-grid,
+            .pricing-grid-2 {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1548,8 +1609,8 @@
     <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-right">
-                <span class="hero-tag">Tu Negocio de Fin de Semana</span>
-                <h1>Gana <span class="highlight">$5,000 a $15,000</span> extra al mes vendiendo recuerdos deportivos que las familias aman</h1>
+                <span class="hero-tag">Tu Próximo Gran Negocio</span>
+                <h1>Transforma tu tiempo libre en ingresos adicionales <span class="highlight">¡El límite lo pones tú!</span></h1>
                 <p class="hero-subtitle">Sin inventario. Sin experiencia. Tú decides cuándo y cuánto trabajar.</p>
                 <a href="https://wa.me/5212221234567?text=Quiero%20ver%20cómo%20funciona%20Poster%20Shot" class="hero-cta" target="_blank">Ver Cómo Funciona →</a>
             </div>
@@ -1564,7 +1625,7 @@
 
     <div class="wave-divider"></div>
 
-    <!-- ========== STATS SECTION - ACTUALIZADA ========== -->
+    <!-- ========== STATS SECTION ========== -->
     <section class="stats-section">
         <div class="stats-container">
             <div class="stats-header" data-aos="fade-up">
@@ -1580,13 +1641,13 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🎯</div>
-                    <div class="stat-number">2 ventas</div>
-                    <div class="stat-label">Para recuperar<br>tu inversión mensual</div>
+                    <div class="stat-number">+500</div>
+                    <div class="stat-label">Por venta</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">📦</div>
                     <div class="stat-number">0</div>
-                    <div class="stat-label">Inventario<br>que necesitas</div>
+                    <div class="stat-label">No necesitas inventario<br>para comenzar</div>
                 </div>
             </div>
 
@@ -1658,8 +1719,13 @@
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="benefit-image-placeholder">💰</div>
                     <div class="benefit-content">
-                        <h3><span class="amount">$500+</span> por venta</h3>
-                        <p>Precio sugerido $1,000 - Costo $500 = Tu bolsillo. Sin complicaciones.</p>
+                        <h3><span class="amount">$500</span> por venta</h3>
+                        <p class="benefit-breakdown">
+                            <span class="line">Precio sugerido: $1,000</span>
+                            <span class="line">Costos: $500</span>
+                            <span class="line">Utilidad Neta: $500</span>
+                            <span class="line">Sin complicaciones.</span>
+                        </p>
                     </div>
                 </div>
 
@@ -1667,7 +1733,7 @@
                     <div class="benefit-image-placeholder">🎓</div>
                     <div class="benefit-content">
                         <h3>Cero experiencia necesaria</h3>
-                        <p>Si sabes usar WhatsApp, puedes usar nuestro software. Es así de simple.</p>
+                        <p>Nuestro software es tan fácil de usar como WhatsApp. Es así de simple.</p>
                     </div>
                 </div>
 
@@ -1675,7 +1741,7 @@
                     <div class="benefit-image-placeholder">📦</div>
                     <div class="benefit-content">
                         <h3>Sin inventario</h3>
-                        <p>Nosotros imprimimos y enviamos directo al cliente. Tú solo vendes.</p>
+                        <p>Tú solo vendes. Nosotros imprimimos y enviamos al cliente.</p>
                     </div>
                 </div>
             </div>
@@ -1685,7 +1751,7 @@
                     <div class="benefit-image-placeholder">🚀</div>
                     <div class="benefit-content">
                         <h3>Empieza esta semana</h3>
-                        <p>Alta hoy, vende mañana. Sin cursos largos ni capacitaciones eternas.</p>
+                        <p>Suscríbete hoy, comienza a vender mañana. Sin cursos largos ni capacitaciones eternas.</p>
                     </div>
                 </div>
 
@@ -1700,8 +1766,8 @@
                 <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="benefit-image-placeholder">🏟️</div>
                     <div class="benefit-content">
-                        <h3>+50,000 eventos al año</h3>
-                        <p>Solo en México hay miles de torneos deportivos cada semana. Tu mercado potencial es enorme.</p>
+                        <h3>+50,000 eventos al año en México</h3>
+                        <p>Imagínate cuántos eventos deportivos y no deportivos hay en tu ciudad. Tu mercado potencial es enorme.</p>
                     </div>
                 </div>
             </div>
@@ -1800,8 +1866,8 @@
                 <div class="how-step">
                     <div class="step-icon">💰</div>
                     <span class="step-number">4</span>
-                    <h4>Tú Cobras</h4>
-                    <p>Ganas $500+ por cada poster vendido. Así de fácil.</p>
+                    <h4>Tú Ganas</h4>
+                    <p>$500 por cada poster vendido. Así de fácil.</p>
                 </div>
             </div>
 
@@ -1813,7 +1879,7 @@
                     <span>📍</span> Entrega: 3-5 días a domicilio
                 </div>
                 <div class="how-detail-item">
-                    <span>💵</span> Tu ganancia: $500+ por venta
+                    <span>💵</span> Tu ganancia: $500 por venta
                 </div>
             </div>
 
@@ -1823,7 +1889,7 @@
         </div>
     </section>
 
-    <!-- ========== MARQUEE - ACTUALIZADO ========== -->
+    <!-- ========== MARQUEE ========== -->
     <section class="marquee-section">
         <div class="marquee-track">
             <div class="marquee-item">
@@ -1872,7 +1938,7 @@
                 <div class="product-content">
                     <span class="product-tag">A U T O - G E N E R A D O</span>
                     <h3>Posters de Equipo</h3>
-                    <p>Nuestros <strong>Posters de Equipo Auto-Generados</strong> muestran todo el roster en un diseño unificado e impresionante. Con solo unos clics, el software toma la foto de cada jugador y crea un poster de equipo personalizado al instante — <strong>sin necesidad de alinear a los niños del equipo torpemente</strong> y sin experiencia en diseño necesaria.</p>
+                    <p>Nuestros <strong>Posters de Equipo Auto-Generados</strong> muestran a todos los jugadores en un diseño unificado e impresionante. Con solo unos clics, el software selecciona la foto de cada jugador y crea un poster de equipo personalizado al instante — <strong>sin necesidad de alinear a los jugadores del equipo torpemente</strong> y sin experiencia en diseño necesaria.</p>
                 </div>
                 <div class="product-images">
                     <img src="img/en medio 4.jpeg" class="product-poster-img" loading="lazy" alt="Equipo 1">
@@ -1887,7 +1953,7 @@
         </div>
     </section>
 
-    <!-- ========== PARA QUIÉN ES - ACTUALIZADA ========== -->
+    <!-- ========== PARA QUIÉN ES ========== -->
     <section class="for-who-section">
         <div class="for-who-container" data-aos="fade-up">
             <h2>¿Es Poster Shot Para Ti?</h2>
@@ -1903,7 +1969,7 @@
                         <li><span>📸</span> Eres fotógrafo y quieres diversificar tus servicios</li>
                         <li><span>🏃</span> Eres entrenador con acceso a equipos y torneos</li>
                         <li><span>💼</span> Buscas un negocio flexible sin horarios fijos</li>
-                        <li><span>🌐</span> Quieres vender online a todo México</li>
+                        <li><span>🌐</span> Quieres vender online a todo el mundo</li>
                     </ul>
                 </div>
                 
@@ -1926,31 +1992,99 @@
     <section class="pricing-section" id="precios">
         <div class="pricing-container">
             <div class="pricing-header" data-aos="fade-up">
-                <h2>Plan de Lanzamiento</h2>
-                <p>Todo lo que necesitas para empezar a generar ingresos.</p>
+                <h2>Planes de Suscripción</h2>
+                <p>Elige el plan que mejor se adapte a tus necesidades.</p>
             </div>
 
-            <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="pricing-badge">🔥 Oferta de Lanzamiento</div>
-                <h3>Plan Starter</h3>
-                <div class="pricing-amount">$1,000</div>
-                <div class="pricing-period">pesos mexicanos / mes</div>
-                
-                <ul class="pricing-features">
-                    <li><span class="check-icon">✓</span> Software completo sin límites</li>
-                    <li><span class="check-icon">✓</span> Plantillas de todos los deportes</li>
-                    <li><span class="check-icon">✓</span> Edición profesional automática</li>
-                    <li><span class="check-icon">✓</span> Impresión en marco premium (8x32, 8x10)</li>
-                    <li><span class="check-icon">✓</span> Envío directo a tus clientes</li>
-                    <li><span class="check-icon">✓</span> Soporte prioritario por WhatsApp</li>
-                </ul>
+            <!-- Primera fila de planes -->
+            <div class="pricing-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="pricing-card">
+                    <h3>Plan Starter</h3>
+                    <div class="pricing-amount">$1,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Software completo</li>
+                        <li><span class="check-icon">✓</span> Plantillas básicas</li>
+                        <li><span class="check-icon">✓</span> Soporte por WhatsApp</li>
+                    </ul>
 
-                <div class="pricing-bonus">
-                    <div class="pricing-bonus-title">🎁 Bonus de Bienvenida</div>
-                    <div class="pricing-bonus-text">15 leads listos para contactar y hacer tus primeras ventas online</div>
+                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Starter" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
                 </div>
 
-                <a href="https://wa.me/5212221234567?text=Quiero%20activar%20mi%20Plan%20Starter%20de%20Poster%20Shot" class="btn-primary" target="_blank">Activar Mi Plan →</a>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">🔥 Más Popular</div>
+                    <h3>Plan Básico</h3>
+                    <div class="pricing-amount">$2,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Starter</li>
+                        <li><span class="check-icon">✓</span> Plantillas premium</li>
+                        <li><span class="check-icon">✓</span> Soporte prioritario</li>
+                    </ul>
+
+                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Básico" class="btn-primary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Profesional</h3>
+                    <div class="pricing-amount">$4,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Básico</li>
+                        <li><span class="check-icon">✓</span> Funciones avanzadas</li>
+                        <li><span class="check-icon">✓</span> Capacitación incluida</li>
+                    </ul>
+
+                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Profesional" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+            </div>
+
+            <!-- Segunda fila de planes -->
+            <div class="pricing-grid-2" data-aos="fade-up" data-aos-delay="200" style="margin-top: 1.5rem;">
+                <div class="pricing-card">
+                    <h3>Plan Empresarial</h3>
+                    <div class="pricing-amount">$6,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Profesional</li>
+                        <li><span class="check-icon">✓</span> Multi-usuario</li>
+                        <li><span class="check-icon">✓</span> Reportes avanzados</li>
+                    </ul>
+
+                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Empresarial" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Premium</h3>
+                    <div class="pricing-amount">$8,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Empresarial</li>
+                        <li><span class="check-icon">✓</span> Personalización total</li>
+                        <li><span class="check-icon">✓</span> Account manager</li>
+                    </ul>
+
+                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Premium" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Elite</h3>
+                    <div class="pricing-amount">$10,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Premium</li>
+                        <li><span class="check-icon">✓</span> Exclusividad regional</li>
+                        <li><span class="check-icon">✓</span> Soporte VIP 24/7</li>
+                    </ul>
+
+                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Elite" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1959,8 +2093,8 @@
     <section class="guarantee-section">
         <div class="guarantee-container" data-aos="fade-up">
             <div class="guarantee-icon">🛡️</div>
-            <h2>Garantía: Recupera Tu Inversión o Te Devolvemos Tu Dinero</h2>
-            <p>Si no recuperas tu inversión en el primer mes, te devolvemos tu dinero. Sin preguntas, sin complicaciones.</p>
+            <h2>Garantía de Satisfacción</h2>
+            <p>Si no estás satisfecho en el primer mes, te devolvemos el 50% de tu inversión. Sin complicaciones.</p>
             
             <div class="guarantee-highlight">
                 <p>💡 La suscripción cuesta $1,000. Ganas $500 por poster. <strong>Solo necesitas vender 2 posters para recuperar tu inversión.</strong></p>
@@ -1983,7 +2117,7 @@
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Poster Shot es una plataforma que te permite vender posters deportivos personalizados sin necesidad de tener inventario, equipo de diseño o conocimientos técnicos. Nosotros nos encargamos de la edición, impresión y envío.</p>
+                        <p>Poster Shot es una plataforma que te permite vender posters deportivos personalizados sin necesidad de tener inventario o conocimientos técnicos. Nosotros nos encargamos de la impresión y envío.</p>
                     </div>
                 </div>
 
@@ -1993,7 +2127,7 @@
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>¡No! Nuestro software hace todo el trabajo pesado. Solo necesitas subir las fotos y el sistema genera automáticamente diseños profesionales.</p>
+                        <p>¡No! El software es muy fácil de usar. Solo necesitas subir las fotos y seleccionar la plantilla que prefieras.</p>
                     </div>
                 </div>
 
@@ -2003,7 +2137,7 @@
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Depende de ti. Cada poster tiene una ganancia de $500+. Vendiendo 10 posters al mes ganas $4,000 después de pagar la suscripción. Algunos de nuestros usuarios más activos generan $30,000+ al mes.</p>
+                        <p>Depende de ti. Cada poster tiene una ganancia de $500. Vendiendo 10 posters al mes ganas $4,000 después de pagar la suscripción. Algunos de nuestros usuarios más activos generan $30,000+ al mes.</p>
                     </div>
                 </div>
             </div>
@@ -2017,7 +2151,7 @@
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Posters individuales de jugadores, posters de equipo completo, y próximamente más productos como tarjetas de trading y calendarios.</p>
+                        <p>Posters individuales de jugadores y posters de equipo completo.</p>
                     </div>
                 </div>
 
@@ -2061,7 +2195,7 @@
                         <span class="faq-icon">∨</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Tenemos garantía de devolución. Si no recuperas tu inversión en el primer mes, te devolvemos tu dinero. Sin preguntas.</p>
+                        <p>Tenemos garantía de satisfacción. Si no estás satisfecho en el primer mes, te devolvemos el 50% de tu inversión.</p>
                     </div>
                 </div>
 
