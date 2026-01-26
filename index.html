@@ -567,7 +567,8 @@
             transform: translateY(-2px);
         }
 
-        /* ========== VIDEO SECTION ========== */
+        /* ========== VIDEO SECTION (DESHABILITADA) ========== */
+        /*
         .video-section {
             padding: 5rem 5%;
             background: white;
@@ -634,6 +635,7 @@
         .play-btn:hover {
             transform: scale(1.1);
         }
+        */
 
         /* ========== CALCULATOR SECTION ========== */
         .calculator-section {
@@ -1482,12 +1484,17 @@
             z-index: 999;
             transition: all 0.3s;
             text-decoration: none;
-            font-size: 1.8rem;
         }
 
         .whatsapp-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
         }
 
         /* ========== RESPONSIVE ========== */
@@ -1587,8 +1594,11 @@
     </style>
 </head>
 <body>
-    <a href="https://wa.me/5212221234567?text=Hola,%20quiero%20información%20sobre%20Poster%20Shot" class="whatsapp-btn" target="_blank">
-        💬
+    <!-- Botón flotante de WhatsApp con logo SVG -->
+    <a href="https://wa.me/525610081910" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
     </a>
 
     <nav>
@@ -1601,7 +1611,7 @@
                 <li><a href="#como-funciona">Cómo Funciona</a></li>
                 <li><a href="#precios">Precios</a></li>
             </ul>
-            <a href="https://wa.me/5212221234567" class="nav-btn" target="_blank">Quiero Empezar</a>
+            <a href="https://wa.me/525610081910" class="nav-btn" target="_blank">Quiero Empezar</a>
         </div>
     </nav>
 
@@ -1612,7 +1622,7 @@
                 <span class="hero-tag">Tu Próximo Gran Negocio</span>
                 <h1>Transforma tu tiempo libre en ingresos adicionales <span class="highlight">¡El límite lo pones tú!</span></h1>
                 <p class="hero-subtitle">Sin inventario. Sin experiencia. Tú decides cuándo y cuánto trabajar.</p>
-                <a href="https://wa.me/5212221234567?text=Quiero%20ver%20cómo%20funciona%20Poster%20Shot" class="hero-cta" target="_blank">Ver Cómo Funciona →</a>
+                <a href="https://wa.me/525610081910?text=Quiero%20ver%20cómo%20funciona%20Poster%20Shot" class="hero-cta" target="_blank">Ver Cómo Funciona →</a>
             </div>
             <div class="hero-visual" data-aos="fade-left">
                 <div class="hero-shape"></div>
@@ -1773,11 +1783,13 @@
             </div>
 
             <div class="benefits-cta" data-aos="fade-up" style="margin-top: 3rem;">
-                <a href="https://wa.me/5212221234567?text=Quiero%20empezar%20mi%20prueba%20con%20Poster%20Shot" class="btn-primary" target="_blank">Empezar Mi Prueba →</a>
+                <a href="https://wa.me/525610081910?text=Quiero%20empezar%20mi%20prueba%20con%20Poster%20Shot" class="btn-primary" target="_blank">Empezar Mi Prueba →</a>
             </div>
         </div>
     </section>
 
+    <!-- ========== VIDEO SECTION (DESHABILITADA - Descomentar cuando esté listo) ========== -->
+    <!--
     <section class="video-section">
         <div class="video-container" data-aos="fade-up">
             <h2>Mira Para Conocer Más</h2>
@@ -1789,6 +1801,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- ========== CALCULADORA DE GANANCIAS ========== -->
     <section class="calculator-section" id="calculadora">
@@ -1873,7 +1886,7 @@
 
             <div class="how-details">
                 <div class="how-detail-item">
-                    <span>⏱️</span> Tiempo por poster: ~15 minutos
+                    <span>⏱️</span> Tiempo por poster: ~3 minutos
                 </div>
                 <div class="how-detail-item">
                     <span>📍</span> Entrega: 3-5 días a domicilio
@@ -1884,7 +1897,7 @@
             </div>
 
             <div class="how-cta">
-                <a href="https://wa.me/5212221234567?text=Quiero%20ver%20una%20demo%20del%20software" class="btn-primary" target="_blank">Ver Demo del Software →</a>
+                <a href="https://wa.me/525610081910?text=Quiero%20ver%20una%20demo%20del%20software" class="btn-primary" target="_blank">Ver Demo del Software →</a>
             </div>
         </div>
     </section>
@@ -1948,7 +1961,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 2rem;" data-aos="fade-up">
-                <a href="https://wa.me/5212221234567?text=Quiero%20ver%20ejemplos%20de%20posters" class="btn-primary" target="_blank">Ver Más Ejemplos →</a>
+                <a href="https://wa.me/525610081910?text=Quiero%20ver%20ejemplos%20de%20posters" class="btn-primary" target="_blank">Ver Más Ejemplos →</a>
             </div>
         </div>
     </section>
@@ -2005,11 +2018,11 @@
                     
                     <ul class="pricing-features">
                         <li><span class="check-icon">✓</span> Software completo</li>
-                        <li><span class="check-icon">✓</span> Plantillas básicas</li>
-                        <li><span class="check-icon">✓</span> Soporte por WhatsApp</li>
+                        <li><span class="check-icon">✓</span> Plantillas de todos los deportes</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $200</li>
                     </ul>
 
-                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Starter" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                    <a href="https://wa.me/525610081910?text=Quiero%20el%20Plan%20Starter" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
                 </div>
 
                 <div class="pricing-card featured">
@@ -2020,11 +2033,10 @@
                     
                     <ul class="pricing-features">
                         <li><span class="check-icon">✓</span> Todo del Plan Starter</li>
-                        <li><span class="check-icon">✓</span> Plantillas premium</li>
-                        <li><span class="check-icon">✓</span> Soporte prioritario</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $150</li>
                     </ul>
 
-                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Básico" class="btn-primary" target="_blank">Seleccionar Plan →</a>
+                    <a href="https://wa.me/525610081910?text=Quiero%20el%20Plan%20Básico" class="btn-primary" target="_blank">Seleccionar Plan →</a>
                 </div>
 
                 <div class="pricing-card">
@@ -2034,11 +2046,10 @@
                     
                     <ul class="pricing-features">
                         <li><span class="check-icon">✓</span> Todo del Plan Básico</li>
-                        <li><span class="check-icon">✓</span> Funciones avanzadas</li>
-                        <li><span class="check-icon">✓</span> Capacitación incluida</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $80</li>
                     </ul>
 
-                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Profesional" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                    <a href="https://wa.me/525610081910?text=Quiero%20el%20Plan%20Profesional" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
                 </div>
             </div>
 
@@ -2051,11 +2062,11 @@
                     
                     <ul class="pricing-features">
                         <li><span class="check-icon">✓</span> Todo del Plan Profesional</li>
-                        <li><span class="check-icon">✓</span> Multi-usuario</li>
-                        <li><span class="check-icon">✓</span> Reportes avanzados</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $60</li>
+                        <li><span class="check-icon">✓</span> Acceso CRM personalizado</li>
                     </ul>
 
-                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Empresarial" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                    <a href="https://wa.me/525610081910?text=Quiero%20el%20Plan%20Empresarial" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
                 </div>
 
                 <div class="pricing-card">
@@ -2065,11 +2076,10 @@
                     
                     <ul class="pricing-features">
                         <li><span class="check-icon">✓</span> Todo del Plan Empresarial</li>
-                        <li><span class="check-icon">✓</span> Personalización total</li>
-                        <li><span class="check-icon">✓</span> Account manager</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $40</li>
                     </ul>
 
-                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Premium" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                    <a href="https://wa.me/525610081910?text=Quiero%20el%20Plan%20Premium" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
                 </div>
 
                 <div class="pricing-card">
@@ -2079,11 +2089,11 @@
                     
                     <ul class="pricing-features">
                         <li><span class="check-icon">✓</span> Todo del Plan Premium</li>
-                        <li><span class="check-icon">✓</span> Exclusividad regional</li>
-                        <li><span class="check-icon">✓</span> Soporte VIP 24/7</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $20</li>
+                        <li><span class="check-icon">✓</span> Soporte prioritario</li>
                     </ul>
 
-                    <a href="https://wa.me/5212221234567?text=Quiero%20el%20Plan%20Elite" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                    <a href="https://wa.me/525610081910?text=Quiero%20el%20Plan%20Elite" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
                 </div>
             </div>
         </div>
@@ -2217,7 +2227,7 @@
         <div class="cta-content" data-aos="fade-up">
             <h2>¿Listo Para Empezar Tu Negocio?</h2>
             <p>Únete a los emprendedores que ya están generando ingresos con Poster Shot.</p>
-            <a href="https://wa.me/5212221234567?text=Quiero%20agendar%20una%20llamada%20para%20conocer%20más%20de%20Poster%20Shot" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
+            <a href="https://wa.me/525610081910?text=Quiero%20agendar%20una%20llamada%20para%20conocer%20más%20de%20Poster%20Shot" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
         </div>
     </section>
 
