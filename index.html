@@ -3,41 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Poster Shot - Transforma tu tiempo libre en ingresos vendiendo posters deportivos personalizados.">
-    
-    <meta property="og:title" content="Poster Shot - Tu Negocio de Posters Deportivos">
-    <meta property="og:description" content="Genera ingresos extra vendiendo posters personalizados. Sin inventario, sin experiencia.">
-    <meta property="og:image" content="img/poster-golf-jose.jpg">
-    
+    <meta name="description" content="Poster Shot - Transforma tu tiempo libre en ingresos vendiendo posters deportivos personalizados. Sin inventario, sin experiencia.">
     <title>Poster Shot - Vende Posters Deportivos y Genera Ingresos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --navy: #2B4162;
             --navy-light: #3d5a80;
             --red: #E63946;
+            --red-light: #ff6b6b;
             --dark-navy: #1a2940;
             --light-bg: #f0f4ff;
+            --light-gray: #f5f5f5;
             --dark: #0a0a0a;
             --text-gray: #666;
             --green: #27ae60;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #ffffff;
             color: #1a1a1a;
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        img { max-width: 100%; display: block; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-        /* --- NAVBAR & MENU HAMBURGUESA --- */
+        /* --- LOGO NAVBAR --- */
+        .nav-logo-img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* --- PORTADA HERO --- */
+        .hero-poster-img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            border: 4px solid white;
+            position: relative; 
+            z-index: 10; 
+        }
+
+        /* --- IMÁGENES PRODUCTOS / GALERÍA NUEVA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            z-index: 5;
+        }
+        
+        /* Clase para destacar la foto panorámica */
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        /* Footer Logo */
+        .footer-logo-img {
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        /* ========== NAVBAR ========== */
         nav {
             position: fixed;
             top: 0;
@@ -57,7 +120,10 @@
             align-items: center;
         }
 
-        .nav-logo-img { height: 60px; width: auto; }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
 
         .nav-links {
             display: flex;
@@ -71,10 +137,13 @@
             font-weight: 500;
             font-size: 0.95rem;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover { color: var(--red); }
+        .nav-links a:hover {
+            color: var(--red);
+        }
 
         .nav-btn {
             background: var(--red);
@@ -83,17 +152,22 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s;
         }
 
-        .nav-btn:hover { background: var(--dark-navy); transform: translateY(-2px); }
+        .nav-btn:hover {
+            background: var(--dark-navy);
+            transform: translateY(-2px);
+        }
 
-        /* Hamburger Icon */
+        /* HAMBURGER MENU STYLES */
         .hamburger {
             display: none;
             cursor: pointer;
             flex-direction: column;
             gap: 5px;
+            z-index: 1001;
         }
 
         .hamburger span {
@@ -104,12 +178,14 @@
             transition: all 0.3s;
         }
 
-        /* --- HERO --- */
+        /* ========== HERO ========== */
         .hero {
-            padding: 9rem 5% 5rem;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            padding: 9rem 5% 5rem;
+            background: #ffffff;
+            position: relative;
             overflow: hidden;
         }
 
@@ -122,98 +198,421 @@
             align-items: center;
         }
 
+        .hero-content {
+            position: relative;
+            z-index: 20;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 1.5rem;
             color: var(--dark);
+            letter-spacing: -0.02em;
         }
 
-        .hero h1 .highlight { color: var(--red); }
-        
+        .hero h1 .highlight {
+            color: var(--red);
+        }
+
         .hero-subtitle {
             font-size: 1.2rem;
             color: var(--text-gray);
             margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
-        .hero-poster-img {
-            width: 100%;
-            max-width: 480px;
-            border-radius: 12px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            border: 4px solid white;
-            position: relative; 
-            z-index: 10; 
+        .hero-cta {
+            background: var(--red);
+            color: white;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
         }
 
-        .hero-visual { position: relative; display: flex; justify-content: center; }
-        
+        .hero-cta:hover {
+            background: var(--dark-navy);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(43, 65, 98, 0.3);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
         .hero-shape {
             position: absolute;
-            width: 500px; height: 500px;
+            width: 500px;
+            height: 500px;
             background: var(--red);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            right: -50px; top: 50%;
+            right: -50px;
+            top: 50%;
             transform: translateY(-50%);
             z-index: 0;
         }
 
-        /* --- GALERÍA / EJEMPLOS (NUEVA SECCIÓN) --- */
-        .gallery-section {
+        .hero-shape-secondary {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--light-bg);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            right: 50px;
+            top: -50px;
+            z-index: 0;
+        }
+
+        .hero-arrow {
+            position: absolute;
+            top: 15%;
+            right: 25%;
+            z-index: 15;
+            font-size: 3rem;
+            color: white;
+            transform: rotate(30deg);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* ========== WAVE DIVIDER ========== */
+        .wave-divider {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(90deg, var(--red) 0%, var(--red) 50%, var(--navy) 50%, var(--navy) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+        }
+
+        /* ========== STATS SECTION ========== */
+        .stats-section {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .stats-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .stats-header p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--navy));
+        }
+
+        .stat-card:hover {
+            border-color: var(--red);
+            box-shadow: 0 10px 40px rgba(230, 57, 70, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        /* ========== TESTIMONIALS UPDATED ========== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--light-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            border-color: var(--red);
+        }
+
+        .testimonial-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--red), var(--red-light));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .testimonial-stars {
+            color: #ffc107;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+        }
+
+        .testimonial-card h4 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .testimonial-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-highlight {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--green);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-highlight-icon {
+            font-size: 1.5rem;
+        }
+
+        .testimonial-highlight-text {
+            font-weight: 700;
+            color: var(--green);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .testimonial-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(43, 65, 98, 0.3);
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .testimonial-location {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .testimonial-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            color: var(--green);
+            background: rgba(39, 174, 96, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.3rem;
+        }
+
+        /* ========== BENEFITS SECTION ========== */
+        .benefits-section {
             padding: 6rem 5%;
             background: white;
         }
 
-        .gallery-container {
-            max-width: 1400px;
+        .benefits-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .gallery-header {
+        .benefits-header {
             text-align: center;
             margin-bottom: 4rem;
         }
 
-        .gallery-header h2 {
+        .benefits-header h2 {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
-            color: var(--navy);
+            color: var(--red);
             margin-bottom: 1rem;
+            font-style: italic;
         }
 
-        /* Masonry-ish Grid */
-        .gallery-grid {
+        .benefits-header p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .gallery-item {
-            border-radius: 12px;
+        .benefit-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            position: relative;
+            transition: all 0.3s;
         }
 
-        .gallery-item:hover { transform: translateY(-5px); z-index: 2; }
+        .benefit-card:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
 
-        .gallery-item img {
+        .benefit-image-placeholder {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: 120px;
+            background: linear-gradient(135deg, var(--light-bg), #e0e7ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .benefit-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-card h3 .amount {
+            color: var(--red);
+            font-size: 1.4rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .benefit-breakdown {
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .benefit-breakdown .line {
             display: block;
         }
 
-        /* Para destacar la panorámica */
-        .gallery-item.wide {
-            grid-column: span 2; 
+        .benefits-cta {
+            text-align: center;
         }
-
-        .gallery-cta { text-align: center; margin-top: 3rem; }
 
         .btn-primary {
             background: var(--red);
@@ -222,26 +621,95 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1rem;
             display: inline-block;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
         }
-        
-        .btn-primary:hover { background: var(--dark-navy); transform: translateY(-2px); }
 
-        /* --- CALCULADORA --- */
+        .btn-primary:hover {
+            background: var(--dark-navy);
+            transform: translateY(-2px);
+        }
+
+        /* ========== CALCULATOR SECTION ========== */
         .calculator-section {
             padding: 5rem 5%;
             background: var(--light-bg);
         }
-        
-        .calculator-container { max-width: 700px; margin: 0 auto; }
+
+        .calculator-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .calculator-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .calculator-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
         .calculator-body {
             background: white;
             border-radius: 20px;
             padding: 2.5rem;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .calculator-input-group {
+            margin-bottom: 2rem;
+        }
+
+        .calculator-label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .calculator-slider-container {
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .calculator-slider {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--light-bg) 0%, var(--red) 100%);
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .calculator-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--navy);
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .calculator-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
         }
 
         .calculator-value-display {
@@ -252,28 +720,61 @@
             color: var(--navy);
         }
 
+        .calculator-value-display span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-gray);
+        }
+
+        .calculator-breakdown {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
         .breakdown-item {
             display: flex;
             justify-content: space-between;
             padding: 0.8rem 0;
             border-bottom: 1px dashed #ddd;
+            font-size: 1rem;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
         }
 
         .breakdown-item.highlight {
             border-bottom: none;
-            border-top: 2px solid var(--navy);
-            margin-top: 0.5rem;
             padding-top: 1rem;
+            margin-top: 0.5rem;
+            border-top: 2px solid var(--navy);
+        }
+
+        .breakdown-item .label {
+            color: var(--text-gray);
+        }
+
+        .breakdown-item .value {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .breakdown-item.highlight .label {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.1rem;
         }
 
         .breakdown-item.highlight .value {
             font-size: 1.8rem;
             font-weight: 800;
+            color: var(--green);
         }
 
-        /* Mensaje dinámico de alerta */
-        .calc-alert {
-            display: none;
+        /* Alerta de números rojos */
+        .calculator-alert {
             margin-top: 1rem;
             padding: 0.8rem;
             background: #ffebee;
@@ -283,65 +784,829 @@
             font-weight: 600;
             font-size: 0.9rem;
             border: 1px solid #ffcdd2;
+            display: none; /* Oculto por defecto */
         }
 
-        /* --- RESTO DE ESTILOS (Resumidos para no repetir todo el bloque anterior innecesariamente) --- */
-        /* Incluye aquí los estilos de Stats, Testimonios, FAQ, Footer del código anterior */
-        .stats-section { padding: 5rem 5%; background: white; }
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
-        .stat-card { padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid #e5e5e5; text-align: center; }
-        .stat-number { font-size: 2.8rem; font-weight: 800; color: var(--red); }
+        .calculator-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-radius: 8px;
+            border: 1px dashed #ffc107;
+        }
+
+        .calculator-note p {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .calculator-note strong {
+            color: var(--red);
+        }
+
+        /* ========== HOW IT WORKS ========== */
+        .how-it-works {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .how-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .how-it-works h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .how-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .how-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .how-timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), var(--navy));
+            z-index: 0;
+        }
+
+        .how-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--red);
+            transition: all 0.3s;
+        }
+
+        .how-step:hover .step-icon {
+            transform: scale(1.1);
+            background: var(--red);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: calc(50% - 50px);
+            background: var(--navy);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .how-step h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .how-step p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .how-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            background: var(--light-bg);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .how-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .how-detail-item span {
+            font-size: 1.3rem;
+        }
+
+        .how-cta {
+            text-align: center;
+        }
+
+        /* ========== MARQUEE ========== */
+        .marquee-section {
+            background: var(--dark-navy);
+            padding: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .marquee-track {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 0 3rem;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .marquee-star {
+            color: var(--red);
+            font-size: 1rem;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ========== PRODUCTS / GALLERY SECTION (MODIFIED) ========== */
+        .products-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         
-        .whatsapp-btn {
-            position: fixed; bottom: 2rem; right: 2rem;
-            width: 60px; height: 60px; background: #25D366;
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; z-index: 999;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        /* Estilos específicos para la sección de ejemplos */
+        .products-header {
+            text-align: center; 
+            margin-bottom: 3rem;
         }
-        .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
+        
+        .products-header h3 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .products-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-        /* --- RESPONSIVE --- */
+        .product-tag {
+            display: inline-block;
+            color: var(--navy);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========== PARA QUIEN ES ========== */
+        .for-who-section {
+            padding: 5rem 5%;
+            background: var(--light-bg);
+        }
+
+        .for-who-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .for-who-section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .for-who-yes, .for-who-no {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .for-who-yes {
+            border: 2px solid var(--green);
+        }
+
+        .for-who-no {
+            border: 2px solid var(--red);
+        }
+
+        .for-who-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .for-who-yes .for-who-title {
+            color: var(--green);
+        }
+
+        .for-who-no .for-who-title {
+            color: var(--red);
+        }
+
+        .for-who-list {
+            list-style: none;
+        }
+
+        .for-who-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .for-who-list li:last-child {
+            border-bottom: none;
+        }
+
+        .for-who-list li span {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ========== PRICING SECTION ========== */
+        .pricing-section {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-header p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            border: 2px solid #e5e5e5;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--red);
+            box-shadow: 0 20px 60px rgba(230, 57, 70, 0.15);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--red);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+            text-align: center;
+        }
+
+        .pricing-period {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .pricing-bonus {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border: 1px dashed #ffc107;
+        }
+
+        .pricing-bonus-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #f57c00;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+
+        .pricing-bonus-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .pricing-card .btn-primary {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+        }
+
+        .pricing-card .btn-secondary {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--navy);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pricing-card .btn-secondary:hover {
+            background: var(--dark-navy);
+            transform: translateY(-2px);
+        }
+
+        /* Second row of pricing */
+        .pricing-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* ========== GARANTÍA SECTION ========== */
+        .guarantee-section {
+            padding: 4rem 5%;
+            background: var(--light-bg);
+        }
+
+        .guarantee-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee-section h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-section p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-highlight {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            display: inline-block;
+            border-left: 4px solid var(--green);
+        }
+
+        .guarantee-highlight p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* ========== FAQ SECTION ========== */
+        .faq-section {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            font-style: italic;
+        }
+
+        .faq-category {
+            margin-bottom: 2rem;
+        }
+
+        .faq-category-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--navy);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.2rem 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-question:hover {
+            color: var(--red);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            padding: 0 0 1.5rem 0;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* ========== CTA FINAL ========== */
+        .cta-section {
+            padding: 5rem 5%;
+            background: var(--dark-navy);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--red);
+            font-size: 1.1rem;
+            padding: 1.2rem 3rem;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: white;
+            color: var(--dark-navy);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            padding: 3rem 5%;
+            background: var(--dark);
+            text-align: center;
+            color: white;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ========== WHATSAPP BTN ========== */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-visual { order: -1; margin-bottom: 3rem; }
-            .stats-grid { grid-template-columns: 1fr; }
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .hero-shape {
+                width: 350px;
+                height: 350px;
+                right: 50%;
+                transform: translate(50%, -50%);
+            }
+
+            .stats-grid,
+            .testimonials-grid,
+            .benefits-grid,
+            .pricing-grid,
+            .pricing-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .how-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-timeline::before {
+                display: none;
+            }
+
+            .for-who-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .hamburger { display: flex; z-index: 1001; }
-            
+            /* Menú Hamburguesa en Móvil */
+            .hamburger {
+                display: flex;
+            }
+
             .nav-links {
                 position: fixed;
-                top: 0; right: -100%;
+                top: 0;
+                right: -100%;
                 width: 70%;
                 height: 100vh;
                 background: white;
                 flex-direction: column;
-                padding: 5rem 2rem;
+                justify-content: center;
+                align-items: center;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.1);
                 transition: right 0.3s ease;
+                padding: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-btn {
+                display: none; /* Se oculta el botón del header en móvil para limpieza */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-shape {
+                width: 280px;
+                height: 280px;
+            }
+
+            .how-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .how-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .calculator-value-display {
+                font-size: 2rem;
+            }
+
+            .breakdown-item.highlight .value {
+                font-size: 1.5rem;
             }
             
-            .nav-links.active { right: 0; }
-            .nav-btn { display: none; } /* Ocultar botón header en móvil para limpiar */
+            /* Ajuste de galería para móvil */
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
             
-            .hero h1 { font-size: 2rem; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .gallery-item.wide { grid-column: span 2; }
+            .gallery-item.wide {
+                grid-column: span 2;
+            }
         }
     </style>
 </head>
 <body>
-
-    <a href="https://wa.me/525610081910?text=Hola,%20vi%20los%20ejemplos%20en%20la%20web%20y%20quiero%20empezar" class="whatsapp-btn" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="https://wa.me/525610081910?text=Hola,%20vengo%20de%20la%20web%20y%20quiero%20empezar" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
     </a>
 
     <nav>
         <div class="nav-container">
             <div class="logo-container">
-                <img src="img/logo horizontal.jpg" alt="Poster Shot" class="nav-logo-img">
+                <img src="img/logo horizontal.jpg" alt="Poster Shot Logo" class="nav-logo-img">
             </div>
             
             <div class="hamburger" id="hamburger-btn">
@@ -352,182 +1617,737 @@
 
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
-                <li><a href="#galeria" onclick="closeMenu()">Ejemplos</a></li>
-                <li><a href="#calculadora" onclick="closeMenu()">Calculadora</a></li>
+                <li><a href="#como-funciona" onclick="closeMenu()">Cómo Funciona</a></li>
+                <li><a href="#ejemplos" onclick="closeMenu()">Ejemplos</a></li>
                 <li><a href="#precios" onclick="closeMenu()">Precios</a></li>
+                <li><a href="#agendar" onclick="closeMenu()">Agendar Llamada</a></li>
             </ul>
-            <a href="#precios" class="nav-btn">Quiero Empezar</a>
+            <a href="https://wa.me/525610081910?text=Hola,%20vengo%20de%20la%20web%20y%20quiero%20empezar" class="nav-btn" target="_blank">Quiero Empezar</a>
         </div>
     </nav>
 
     <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-right">
-                <span style="color:var(--navy); font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Tu Próximo Gran Negocio</span>
-                <h1>Transforma tu tiempo libre en <span class="highlight">ingresos reales</span></h1>
-                <p class="hero-subtitle">Vende posters deportivos personalizados. Sin inventario, sin diseñar desde cero, 100% rentable.</p>
-                <a href="#calculadora" class="hero-cta" style="background:var(--red); color:white; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold;">Calcular Ganancias →</a>
+                <span class="hero-tag">Tu Próximo Gran Negocio</span>
+                <h1>Transforma tu tiempo libre en ingresos adicionales <span class="highlight">¡El límite lo pones tú!</span></h1>
+                <p class="hero-subtitle">Sin inventario. Sin experiencia. Tú decides cuándo y cuánto trabajar.</p>
+                <a href="#como-funciona" class="hero-cta">Ver Cómo Funciona →</a>
             </div>
             <div class="hero-visual" data-aos="fade-left">
                 <div class="hero-shape"></div>
-                <img src="img/poster-golf-jose.jpg" alt="Poster Golf Ejemplo" class="hero-poster-img">
+                <div class="hero-shape-secondary"></div>
+                <img src="img/poster-golf-jose.jpg" alt="Poster Principal" class="hero-poster-img">
+                <div class="hero-arrow">↷</div>
             </div>
         </div>
     </section>
+
+    <div class="wave-divider"></div>
 
     <section class="stats-section">
         <div class="stats-container">
-            <div class="stats-grid">
+            <div class="stats-header" data-aos="fade-up">
+                <h2>El negocio que desearías haber empezado antes</h2>
+                <p>Mientras otros siguen pensándolo, emprendedores como tú ya están generando ingresos cada semana.</p>
+            </div>
+
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
                 <div class="stat-card">
+                    <div class="stat-icon">🖼️</div>
                     <div class="stat-number">+5,000</div>
-                    <div>Posters vendidos</div>
+                    <div class="stat-label">Posters vendidos<br>por nuestra comunidad</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">$500</div>
-                    <div>Ganancia por venta</div>
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">+500</div>
+                    <div class="stat-label">Por venta</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-icon">📦</div>
                     <div class="stat-number">0</div>
-                    <div>Inventario necesario</div>
+                    <div class="stat-label">No necesitas inventario<br>para comenzar</div>
                 </div>
+            </div>
+
+            <div class="testimonials-grid" data-aos="fade-up" data-aos-delay="200">
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-badge">3 años de experiencia</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <h4>"Negocio completo"</h4>
+                    <p>Comencé apoyando en un evento como vendedor, luego adquirí mi suscripción y ya llevo 3 años asistiendo a eventos. Hoy es mi principal fuente de ingresos.</p>
+                    <div class="testimonial-highlight">
+                        <span class="testimonial-highlight-icon">💼</span>
+                        <span class="testimonial-highlight-text">Ingreso principal por 3 años consecutivos</span>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SH</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Santiago Hernández</div>
+                            <div class="testimonial-location">📍 Monterrey</div>
+                            <div class="testimonial-verified">✓ Vendedor verificado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-badge">1.5 años activo</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <h4>"Hay mucho crecimiento"</h4>
+                    <p>Llevo un año y medio asistiendo a eventos. Con dos o tres eventos a la semana y una buena logística, puedes alcanzar utilidades muy atractivas.</p>
+                    <div class="testimonial-highlight">
+                        <span class="testimonial-highlight-icon">📈</span>
+                        <span class="testimonial-highlight-text">$20,000 - $30,000 MXN mensuales</span>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AG</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Alfonso Gutiérrez</div>
+                            <div class="testimonial-location">📍 Guadalajara</div>
+                            <div class="testimonial-verified">✓ Vendedor verificado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-badge">Ventas online</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <h4>"Ingresos extra"</h4>
+                    <p>Trabajo entre semana y genero ingresos extra vendiendo online los fines de semana. Solo necesito mi celular, laptop y el software. ¡Me encanta!</p>
+                    <div class="testimonial-highlight">
+                        <span class="testimonial-highlight-icon">🏠</span>
+                        <span class="testimonial-highlight-text">100% desde casa, solo fines de semana</span>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RP</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Ramón Peña</div>
+                            <div class="testimonial-location">📍 Puebla</div>
+                            <div class="testimonial-verified">✓ Vendedor verificado</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="gallery-section" id="galeria">
-        <div class="gallery-container">
-            <div class="gallery-header" data-aos="fade-up">
-                <h2>Calidad Profesional en Minutos</h2>
-                <p style="color:var(--text-gray); font-size:1.1rem;">Estos son posters reales creados por nuestra comunidad. Así se ven tus productos.</p>
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefits-header" data-aos="fade-up">
+                <h2>Ingresos extra que se adaptan a tu vida.</h2>
+                <p>Poster Shot permite a cualquiera ganar dinero creando posters deportivos personalizados que las familias aman — sin tienda, sin experiencia requerida.</p>
             </div>
 
-            <div class="gallery-grid" data-aos="fade-up">
-                <div class="gallery-item"><img src="img/poster-fifa-pat.jpg" alt="Estilo Carta Futbol" loading="lazy"></div>
-                <div class="gallery-item"><img src="img/poster-futbol-cumbres.jpg" alt="Futbol Cumbres" loading="lazy"></div>
-                <div class="gallery-item"><img src="img/poster-karate-karen.jpg" alt="Karate" loading="lazy"></div>
-                <div class="gallery-item"><img src="img/poster-basquet-brandon.jpg" alt="Basquetbol Neon" loading="lazy"></div>
-                
-                <div class="gallery-item wide"><img src="img/poster-beisbol-team.jpg" alt="Equipo Beisbol Panoramica" loading="lazy"></div>
-                
-                <div class="gallery-item"><img src="img/poster-golf-ruben.jpg" alt="Golf Vertical" loading="lazy"></div>
-                <div class="gallery-item"><img src="img/poster-natacion-montse.jpg" alt="Natación" loading="lazy"></div>
-                <div class="gallery-item"><img src="img/poster-futbol-raptors.jpg" alt="Futbol Raptors" loading="lazy"></div>
-                <div class="gallery-item"><img src="img/poster-futbol-patricio.jpg" alt="Trofeo Futbol" loading="lazy"></div>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-image-placeholder">💰</div>
+                    <div class="benefit-content">
+                        <h3><span class="amount">$500</span> por venta</h3>
+                        <p class="benefit-breakdown">
+                            <span class="line">Precio sugerido: $1,000</span>
+                            <span class="line">Costos: $500</span>
+                            <span class="line">Utilidad Neta: $500</span>
+                            <span class="line">Sin complicaciones.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-image-placeholder">🎓</div>
+                    <div class="benefit-content">
+                        <h3>Cero experiencia necesaria</h3>
+                        <p>Nuestro software es tan fácil de usar como WhatsApp. Es así de simple.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-image-placeholder">📦</div>
+                    <div class="benefit-content">
+                        <h3>Sin inventario</h3>
+                        <p>Tú solo vendes. Nosotros imprimimos y enviamos al cliente.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="gallery-cta" data-aos="fade-up">
-                <a href="img/catalogo-ejemplo.pdf" class="btn-primary" style="background: white; color: var(--navy); border: 2px solid var(--navy); margin-right: 10px;">Ver Catálogo Completo</a>
-                <a href="#precios" class="btn-primary">¡Me Encantan! Quiero Empezar</a>
+            <div class="benefits-grid" style="margin-top: 2rem;">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-image-placeholder">🚀</div>
+                    <div class="benefit-content">
+                        <h3>Empieza esta semana</h3>
+                        <p>Suscríbete hoy, comienza a vender mañana. Sin cursos largos ni capacitaciones eternas.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-image-placeholder">📈</div>
+                    <div class="benefit-content">
+                        <h3>Crecimiento escalable</h3>
+                        <p>Comienza con un evento y crece a múltiples ubicaciones o incluso un negocio de tiempo completo.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-image-placeholder">🏟️</div>
+                    <div class="benefit-content">
+                        <h3>+50,000 eventos al año en México</h3>
+                        <p>Imagínate cuántos eventos deportivos y no deportivos hay en tu ciudad. Tu mercado potencial es enorme.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefits-cta" data-aos="fade-up" style="margin-top: 3rem;">
+                <a href="https://wa.me/525610081910?text=Hola,%20vengo%20de%20la%20web%20y%20quiero%20empezar" class="btn-primary" target="_blank">Empezar Mi Prueba →</a>
             </div>
         </div>
     </section>
 
     <section class="calculator-section" id="calculadora">
         <div class="calculator-container" data-aos="fade-up">
-            <div style="text-align:center; margin-bottom:2rem;">
-                <h2 style="font-size:2.5rem; font-weight:800; color:var(--dark);">Calculadora de Ganancias</h2>
-                <p>Desliza para ver tu potencial mensual</p>
+            <div class="calculator-header">
+                <h2>💰 Calcula Tus Ganancias</h2>
+                <p>Desliza para ver cuánto puedes ganar al mes</p>
             </div>
 
             <div class="calculator-body">
-                <div style="margin-bottom:2rem;">
-                    <label style="display:block; text-align:center; font-weight:600; margin-bottom:1rem;">Ventas mensuales estimadas:</label>
-                    <input type="range" min="1" max="50" value="5" style="width:100%; cursor:pointer;" id="posters-slider">
+                <div class="calculator-input-group">
+                    <label class="calculator-label">¿Cuántos posters planeas vender al mes?</label>
+                    <div class="calculator-slider-container">
+                        <input type="range" min="1" max="50" value="10" class="calculator-slider" id="posters-slider">
+                    </div>
                     <div class="calculator-value-display">
-                        <span id="posters-value">5</span> <span style="font-size:1rem; color:#666;">posters</span>
+                        <span id="posters-value">10</span> <span>posters</span>
                     </div>
                 </div>
 
                 <div class="calculator-breakdown">
                     <div class="breakdown-item">
-                        <span>Ingresos Totales</span>
-                        <span id="total-sales" style="font-weight:600;">$5,000</span>
+                        <span class="label">💵 Ventas totales (x $1,000)</span>
+                        <span class="value" id="total-sales">$10,000</span>
                     </div>
                     <div class="breakdown-item">
-                        <span>Costo Producción ($500 c/u)</span>
-                        <span id="total-cost" style="color:#666;">-$2,500</span>
+                        <span class="label">📦 Costo de producción (x $500)</span>
+                        <span class="value" id="total-cost">-$5,000</span>
                     </div>
                     <div class="breakdown-item">
-                        <span>Suscripción Plataforma</span>
-                        <span style="color:#666;">-$1,100</span>
+                        <span class="label">📱 Suscripción mensual</span>
+                        <span class="value">-$1,100</span>
                     </div>
                     <div class="breakdown-item highlight">
-                        <span>Tu Utilidad Neta</span>
-                        <span id="net-profit">$1,400</span>
+                        <span class="label">🎉 Tu ganancia neta</span>
+                        <span class="value" id="net-profit">$3,900</span>
                     </div>
                 </div>
 
-                <div id="profit-alert" class="calc-alert"></div>
+                <div id="profit-alert" class="calculator-alert"></div>
+
+                <div class="calculator-note">
+                    <p>💡 Con solo <strong>3 posters</strong> ya recuperaste tu inversión mensual. <strong>¡Todo lo demás es ganancia!</strong></p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer style="background:var(--dark); color:white; padding:3rem 5%; text-align:center;">
+    <section class="how-it-works" id="como-funciona">
+        <div class="how-container" data-aos="fade-up">
+            <h2>Cómo Funciona</h2>
+            <p class="how-subtitle">De foto a poster profesional en minutos. Así de simple.</p>
+            
+            <div class="how-timeline">
+                <div class="how-step">
+                    <div class="step-icon">📸</div>
+                    <span class="step-number">1</span>
+                    <h4>Captura</h4>
+                    <p>Toma las fotos del jugador en el evento o recíbelas por WhatsApp</p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="step-icon">💻</div>
+                    <span class="step-number">2</span>
+                    <h4>Sube</h4>
+                    <p>Carga las fotos al software desde cualquier dispositivo</p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="step-icon">🖨️</div>
+                    <span class="step-number">3</span>
+                    <h4>Imprimimos</h4>
+                    <p>Creamos el poster en marco premium y enviamos directo</p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="step-icon">💰</div>
+                    <span class="step-number">4</span>
+                    <h4>Tú Ganas</h4>
+                    <p>$500 por cada poster vendido. Así de fácil.</p>
+                </div>
+            </div>
+
+            <div class="how-details">
+                <div class="how-detail-item">
+                    <span>⏱️</span> Tiempo por poster: ~3 minutos
+                </div>
+                <div class="how-detail-item">
+                    <span>📍</span> Entrega: 3-5 días a domicilio
+                </div>
+                <div class="how-detail-item">
+                    <span>💵</span> Tu ganancia: $500 por venta
+                </div>
+            </div>
+
+            <div class="how-cta">
+                <a href="https://wa.me/525610081910?text=Hola,%20vengo%20de%20la%20web%20y%20quiero%20empezar" class="btn-primary" target="_blank">Quiero Empezar Mi Prueba →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <span class="marquee-text">Envío incluido</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">Soporte 24/7</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">Sin inventario</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">15 leads gratis al empezar</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">Vende online o presencial</span>
+                <span class="marquee-star">★</span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-text">Envío incluido</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">Soporte 24/7</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">Sin inventario</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">15 leads gratis al empezar</span>
+                <span class="marquee-star">★</span>
+                <span class="marquee-text">Vende online o presencial</span>
+                <span class="marquee-star">★</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="ejemplos">
+        <div class="products-container">
+            <div class="products-header" data-aos="fade-up">
+                <span class="product-tag">CALIDAD PROFESIONAL</span>
+                <h3>Ejemplos Reales</h3>
+                <p>Nuestra comunidad crea posters increíbles todos los días. Mira la calidad que puedes ofrecer a tus clientes.</p>
+            </div>
+            
+            <div class="gallery-grid" data-aos="fade-up">
+                <div class="gallery-item">
+                    <img src="img/1.jpg" alt="Poster Golf Jose" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/2.jpg" alt="Poster Carta Futbol" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/3.jpg" alt="Poster Futbol Cumbres" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/4.jpg" alt="Poster Futbol Raptors" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/5.jpg" alt="Poster Karate" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/Basquet Neon.jpg.jpg" alt="Poster Basquet Neon" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/Golf 8x32 2.jpg.jpg" alt="Poster Golf Ruben" loading="lazy">
+                </div>
+                <div class="gallery-item wide">
+                    <img src="img/p-68b745fe-f759-4599-a8d6-9c2792082eef-min.jpg" alt="Poster Panorámico Beisbol" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/Montse - TDLA - NATACIÓN 2025 8X32 v2.jpg" alt="Poster Natación" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/p-ed6d29fb-5af6-4b06-8628-daeb3108aa79-min.jpg" alt="Poster Patricio Trofeo" loading="lazy">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" data-aos="fade-up">
+                <a href="#precios" class="btn-primary">Ver Ejemplos de Ganancias y Precios →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="for-who-section">
+        <div class="for-who-container" data-aos="fade-up">
+            <h2>¿Es Poster Shot Para Ti?</h2>
+            
+            <div class="for-who-grid">
+                <div class="for-who-yes">
+                    <div class="for-who-title">
+                        <span>✅</span> Poster Shot ES para ti si...
+                    </div>
+                    <ul class="for-who-list">
+                        <li><span>🚀</span> Eres emprendedor o quieres ser tu propio jefe</li>
+                        <li><span>👨‍👩‍👧</span> Eres padre/madre de familia buscando ingresos extra</li>
+                        <li><span>📸</span> Eres fotógrafo y quieres diversificar tus servicios</li>
+                        <li><span>🏃</span> Eres entrenador con acceso a equipos y torneos</li>
+                        <li><span>💼</span> Buscas un negocio flexible sin horarios fijos</li>
+                        <li><span>🌐</span> Quieres vender online a todo el mundo</li>
+                    </ul>
+                </div>
+                
+                <div class="for-who-no">
+                    <div class="for-who-title">
+                        <span>❌</span> NO es para ti si...
+                    </div>
+                    <ul class="for-who-list">
+                        <li><span>🚫</span> Buscas dinero fácil sin ningún esfuerzo</li>
+                        <li><span>🚫</span> No estás dispuesto a aprender algo nuevo</li>
+                        <li><span>🚫</span> No puedes invertir $1,100 pesos al mes</li>
+                        <li><span>🚫</span> Esperas resultados sin tomar acción</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="precios">
+        <div class="pricing-container">
+            <div class="pricing-header" data-aos="fade-up">
+                <h2>Planes de Suscripción</h2>
+                <p>Elige el plan que mejor se adapte a tus necesidades.</p>
+            </div>
+
+            <div class="pricing-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="pricing-card">
+                    <h3>Plan Starter</h3>
+                    <div class="pricing-amount">$1,100</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Software completo</li>
+                        <li><span class="check-icon">✓</span> Plantillas de todos los deportes</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $200</li>
+                    </ul>
+
+                    <a href="https://wa.me/525610081910?text=Hola,%20estoy%20en%20la%20web%20y%20me%20interesa%20el%20Plan%20Starter" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">🔥 Más Popular</div>
+                    <h3>Plan Básico</h3>
+                    <div class="pricing-amount">$2,200</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Starter</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $150</li>
+                    </ul>
+
+                    <a href="https://wa.me/525610081910?text=Hola,%20estoy%20en%20la%20web%20y%20me%20interesa%20el%20Plan%20Básico" class="btn-primary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Profesional</h3>
+                    <div class="pricing-amount">$4,400</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Básico</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $80</li>
+                    </ul>
+
+                    <a href="https://wa.me/525610081910?text=Hola,%20estoy%20en%20la%20web%20y%20me%20interesa%20el%20Plan%20Profesional" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+            </div>
+
+            <div class="pricing-grid-2" data-aos="fade-up" data-aos-delay="200" style="margin-top: 1.5rem;">
+                <div class="pricing-card">
+                    <h3>Plan Empresarial</h3>
+                    <div class="pricing-amount">$6,600</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Profesional</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $60</li>
+                        <li><span class="check-icon">✓</span> Acceso CRM personalizado</li>
+                    </ul>
+
+                    <a href="https://wa.me/525610081910?text=Hola,%20estoy%20en%20la%20web%20y%20me%20interesa%20el%20Plan%20Empresarial" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Premium</h3>
+                    <div class="pricing-amount">$8,800</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Empresarial</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $40</li>
+                    </ul>
+
+                    <a href="https://wa.me/525610081910?text=Hola,%20estoy%20en%20la%20web%20y%20me%20interesa%20el%20Plan%20Premium" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plan Elite</h3>
+                    <div class="pricing-amount">$11,000</div>
+                    <div class="pricing-period">pesos mexicanos / mes</div>
+                    
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Todo del Plan Premium</li>
+                        <li><span class="check-icon">✓</span> Costo por desbloqueo: $20</li>
+                        <li><span class="check-icon">✓</span> Soporte prioritario</li>
+                    </ul>
+
+                    <a href="https://wa.me/525610081910?text=Hola,%20estoy%20en%20la%20web%20y%20me%20interesa%20el%20Plan%20Elite" class="btn-secondary" target="_blank">Seleccionar Plan →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="guarantee-container" data-aos="fade-up">
+            <div class="guarantee-icon">🛡️</div>
+            <h2>Garantía de Satisfacción</h2>
+            <p>Si no estás satisfecho en el primer mes, te devolvemos el 50% de tu inversión. Sin complicaciones.</p>
+            
+            <div class="guarantee-highlight">
+                <p>💡 La suscripción cuesta $1,100. Ganas $500 por poster. <strong>Solo necesitas vender 3 posters para recuperar tu inversión.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header" data-aos="fade-up">
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="faq-category" data-aos="fade-up">
+                <div class="faq-category-title">COMENZANDO</div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Qué es Poster Shot?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Poster Shot es una plataforma que te permite vender posters deportivos personalizados sin necesidad de tener inventario o conocimientos técnicos. Nosotros nos encargamos de la impresión y envío.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Necesito experiencia en fotografía o diseño?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>¡No! El software es muy fácil de usar. Solo necesitas subir las fotos y seleccionar la plantilla que prefieras.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Cuánto puedo ganar realmente?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Depende de ti. Cada poster tiene una ganancia de $500. Vendiendo 10 posters al mes ganas $3,900 después de pagar la suscripción. Algunos de nuestros usuarios más activos generan $30,000+ al mes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category" data-aos="fade-up">
+                <div class="faq-category-title">PRODUCTOS Y CARACTERÍSTICAS</div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Qué tipos de productos puedo crear?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Posters individuales de jugadores y posters de equipo completo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Puedo personalizar los diseños?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sí, puedes agregar nombres, números, logos de equipos y seleccionar entre múltiples plantillas para diferentes deportes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Qué tan rápido es el proceso?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Una vez que subes las fotos, el poster está listo para revisión en minutos. El envío al cliente toma 3-5 días hábiles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category" data-aos="fade-up">
+                <div class="faq-category-title">PRECIOS Y GARANTÍA</div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Cuánto cuesta empezar?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>El Plan Starter es de $1,100 MXN/mes. Con solo vender 3 posters recuperas tu inversión mensual. Todo lo demás es ganancia.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Qué pasa si no vendo nada?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tenemos garantía de satisfacción. Si no estás satisfecho en el primer mes, te devolvemos el 50% de tu inversión.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        ¿Puedo vender online sin ir a eventos?
+                        <span class="faq-icon">∨</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>¡Sí! Muchos de nuestros usuarios venden 100% online. Los clientes te envían las fotos por WhatsApp y tú creas el poster desde casa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="agendar">
+        <div class="cta-content" data-aos="fade-up">
+            <h2>¿Listo Para Empezar Tu Negocio?</h2>
+            <p>Únete a los emprendedores que ya están generando ingresos con Poster Shot.</p>
+            <a href="https://calendar.app.google/dK4ePALazSgVAHtk7" class="btn-primary" target="_blank">Agendar Llamada Gratis →</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo vertical.jpg" alt="Poster Shot Logo" class="footer-logo-img">
+        </div>
         <p>&copy; 2025 Poster Shot. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        // Initialize AOS
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80
+        });
 
-        // --- LÓGICA DEL MENÚ HAMBURGUESA ---
+        /* --- MENÚ HAMBURGUESA --- */
         const hamburger = document.getElementById('hamburger-btn');
         const navLinks = document.getElementById('nav-links');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            // Animación simple de las líneas del menú (opcional)
-            hamburger.classList.toggle('open');
-        });
-
-        function closeMenu() {
-            navLinks.classList.remove('active');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
         }
 
-        // --- LÓGICA DE LA CALCULADORA MEJORADA ---
-        const slider = document.getElementById('posters-slider');
-        const postersVal = document.getElementById('posters-value');
-        const tSales = document.getElementById('total-sales');
-        const tCost = document.getElementById('total-cost');
-        const nProfit = document.getElementById('net-profit');
-        const alertBox = document.getElementById('profit-alert');
-
-        function updateCalc() {
-            const qty = parseInt(slider.value);
-            const price = 1000;
-            const cost = 500;
-            const sub = 1100;
-
-            const sales = qty * price;
-            const costs = qty * cost;
-            const profit = sales - costs - sub;
-
-            postersVal.textContent = qty;
-            tSales.textContent = '$' + sales.toLocaleString();
-            tCost.textContent = '-$' + costs.toLocaleString();
-            nProfit.textContent = '$' + profit.toLocaleString();
-
-            // Lógica de Colores y Mensajes
-            if (profit > 0) {
-                nProfit.style.color = '#27ae60'; // Verde
-                alertBox.style.display = 'none';
-            } else {
-                nProfit.style.color = '#E63946'; // Rojo
-                alertBox.style.display = 'block';
-                
-                // Calcular cuántos faltan para salir de números rojos
-                // Punto de equilibrio: (Ventas * 500) > 1100 => Ventas > 2.2 => 3 posters
-                const missing = 3 - qty;
-                if (missing > 0) {
-                    alertBox.textContent = `⚠️ ¡Estás en números rojos! Vende ${missing} poster${missing > 1 ? 's' : ''} más para empezar a ganar dinero.`;
-                } else {
-                    alertBox.textContent = `⚠️ Estás en el punto de equilibrio. ¡Vende uno más para ganar!`;
-                }
+        // Función para cerrar el menú al hacer clic en un enlace
+        function closeMenu() {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
             }
         }
 
-        slider.addEventListener('input', updateCalc);
-        updateCalc(); // Iniciar al cargar
+        /* --- CALCULADORA --- */
+        const postersSlider = document.getElementById('posters-slider');
+        const postersValue = document.getElementById('posters-value');
+        const totalSales = document.getElementById('total-sales');
+        const totalCost = document.getElementById('total-cost');
+        const netProfit = document.getElementById('net-profit');
+        const alertBox = document.getElementById('profit-alert');
+
+        function updateCalculator() {
+            const posters = parseInt(postersSlider.value);
+            const pricePerPoster = 1000;
+            const costPerPoster = 500;
+            const subscription = 1100; // Actualizado a $1,100
+
+            const sales = posters * pricePerPoster;
+            const costs = posters * costPerPoster;
+            const profit = sales - costs - subscription;
+
+            postersValue.textContent = posters;
+            totalSales.textContent = '$' + sales.toLocaleString('es-MX');
+            totalCost.textContent = '-$' + costs.toLocaleString('es-MX');
+            netProfit.textContent = '$' + profit.toLocaleString('es-MX');
+
+            // Change color based on profit
+            if (profit > 0) {
+                netProfit.style.color = '#27ae60';
+                alertBox.style.display = 'none'; // Ocultar alerta si es positivo
+            } else if (profit < 0) {
+                netProfit.style.color = '#E63946';
+                
+                // MOSTRAR ALERTA DE NÚMEROS ROJOS
+                alertBox.style.display = 'block';
+                // Calcular cuántos faltan para equilibrio (punto donde (ventas*500) > 1100 -> min 3 ventas)
+                const missing = 3 - posters;
+                if (missing > 0) {
+                    alertBox.innerHTML = `⚠️ Estás en números rojos. Vende <strong>${missing}</strong> poster${missing > 1 ? 's' : ''} más para empezar a ganar.`;
+                } else {
+                     alertBox.innerHTML = `⚠️ Estás en el límite. ¡Vende uno más para ver ganancias!`;
+                }
+
+            } else {
+                netProfit.style.color = '#666';
+                alertBox.style.display = 'none';
+            }
+        }
+
+        if (postersSlider) {
+            postersSlider.addEventListener('input', updateCalculator);
+            updateCalculator(); // Initialize
+        }
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
